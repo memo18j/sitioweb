@@ -13,9 +13,9 @@
 <div class="panel-body">
     <div class="row">
         <section class="panel panel-default">
-            <header class="panel-heading">
-                <center><span class="h4">Consultar Informacion Infraestructura</span></center>
-            </header>
+            <header class="panel-heading" style="background-color: #aa1916;">
+                    <center><span class="h4" style="color: white;"><b>Consultar Informacion de Infraestructura</b></span></center>
+                </header>
             <%
                 IControlador fachada = (IControlador) session.getAttribute("fachada");
                 ArrayList<InfraestructuraDTO> dp = fachada.mostrarInfraestructura();

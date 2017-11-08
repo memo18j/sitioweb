@@ -117,16 +117,16 @@ public class MySQLInformacionDAO implements IInformacion{
     }
 
     @Override
-    public boolean actualizarInformacion(int idInformacion, String titulo, String fecha, 
-            String contenido, int tipoinfo) throws Exception {
+    public boolean actualizarInformacion(int idInformacion, String descripcion, String nombre,
+            String link, String imagen, int tipoinfo) throws Exception {
         PreparedStatement stmt = null;
         boolean exito = false;
         try {
             conn = Conexion.conectar();
-            if (idInformacion!=0 & !titulo.equalsIgnoreCase("") & !fecha.equalsIgnoreCase("") 
-                    & !contenido.equalsIgnoreCase("") & tipoinfo!=0) {
-                stmt = conn.prepareStatement("UPDATE informacion SET titulo='" + titulo + 
-                        "', fecha='" + fecha + "', contenido='" + contenido +
+            if (idInformacion!=0 & !nombre.equalsIgnoreCase("") & !descripcion.equalsIgnoreCase("") 
+                    & tipoinfo!=0) {
+                stmt = conn.prepareStatement("UPDATE informacion SET nombre='" + nombre + 
+                        "', descripcion='" + descripcion + "', link='" + link + "',imagen='"+imagen+
                         "', tipoinfo=" + tipoinfo + " WHERE idInformacion=" + idInformacion);
                 stmt.executeUpdate();
                 exito = true;

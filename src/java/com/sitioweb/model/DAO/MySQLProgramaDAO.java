@@ -179,13 +179,12 @@ public class MySQLProgramaDAO implements IPrograma{
             if (idPrograma!=0 & !nombre.equalsIgnoreCase("") & tipo!=0 & !director.equalsIgnoreCase("")
                     & !correoprograma.equalsIgnoreCase("") & !ubicacion.equalsIgnoreCase("") 
                     & !telefono.equalsIgnoreCase("") & codsnies!=0 & !modalidad.equalsIgnoreCase("")
-                    & !horario.equalsIgnoreCase("") & !imagen.equalsIgnoreCase("") 
-                    & !link.equalsIgnoreCase("")) {
-                stmt = conn.prepareStatement("UPDATE departamento SET nombre='" + nombre + 
+                    & !horario.equalsIgnoreCase("")) {
+                stmt = conn.prepareStatement("UPDATE programa SET nombre='" + nombre + 
                         "', tipo=" + tipo + ", director='" + director + "', correoprograma='" + 
                         correoprograma + "', ubicacion='" + ubicacion + "', telefono='" + telefono +
-                        "', codsnies=" + codsnies + ", modalidad='" + modalidad + "', horario='" + 
-                        horario + "', imagen='" + imagen + "', link='" + link + "' WHERE idPrograma=" + idPrograma);
+                        "', codsnies=" + codsnies + ", modalidad='" + modalidad + "', horarioatencion='" + 
+                        horario + "', imagen='" + imagen + "', link='" + link + "' WHERE idprograma=" + idPrograma);
                 stmt.executeUpdate();
                 exito = true;
             } else {

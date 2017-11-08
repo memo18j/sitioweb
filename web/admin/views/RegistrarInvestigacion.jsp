@@ -6,7 +6,6 @@
 
 <%@page import="com.sitioweb.model.DTO.TipoInvestigacionDTO"%>
 <%@page import="java.util.ArrayList"%>
-
 <%@page import="com.sitioweb.controller.interfaz.IControlador"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <jsp:include page="../plantilla/header.jsp"/>

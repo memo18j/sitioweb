@@ -186,12 +186,12 @@ public class MySQLNovedadDAO implements INovedad{
         boolean exito = false;
         try {
             conn = Conexion.conectar();
-            if (idNovedad!=0 & !titulo.equalsIgnoreCase("") & !linkimg.equalsIgnoreCase("")
+            if (idNovedad!=0 & !titulo.equalsIgnoreCase("")
                     & !descripcion.equalsIgnoreCase("") & !fecha.equalsIgnoreCase("") 
                     & tiponovedad!=0) {
-                stmt = conn.prepareStatement("UPDATE docente SET titulo='" + titulo + 
+                stmt = conn.prepareStatement("UPDATE novedad SET titulo='" + titulo + 
                         "', linkimg='" + linkimg + "', descripcion='" + descripcion +
-                        "', descripcion='" + descripcion + "', tiponovedad=" + 
+                        "', fecha='" + fecha + "', tiponovedad=" + 
                         tiponovedad + " WHERE idNovedad=" + idNovedad);
                 stmt.executeUpdate();
                 exito = true;

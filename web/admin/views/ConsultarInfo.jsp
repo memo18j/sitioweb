@@ -35,8 +35,6 @@
                         </thead>
                         <tbody>
                             <% for (InformacionDTO i : dp) {%>
-
-
                             <tr>
                                 <th data-field="id"><%=i.getIdInformacion()%></th>                         
                                 <th data-field="nombre"><%=i.getNombre()%></th>

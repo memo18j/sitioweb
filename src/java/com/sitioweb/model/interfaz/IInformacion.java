@@ -18,7 +18,7 @@ public interface IInformacion {
     public ArrayList<InformacionDTO> mostrarInformacion() throws Exception;
     public ArrayList<InformacionDTO> mostrarInformacionId(int idInformacion) throws Exception;
     public boolean eliminarInformacion(InformacionDTO dto) throws Exception;
-    public boolean actualizarInformacion(int idInformacion, String titulo, String fecha, 
-            String contenido, int tipoinfo) throws Exception;
+    public boolean actualizarInformacion(int idInformacion, String descrpcion, String nombre, 
+            String link,String imagen, int tipoinfo) throws Exception;
     
 }

@@ -19,18 +19,22 @@
 <div class="panel-body">
     <div class="row">
         <section class="panel panel-default">
-            <form name="formActPro" id="formActPro" action="procesar/.jsp" enctype="multipart/form-data" method="post" >
+            <form name="formActPro" id="formActPro" action="Edit/editPrograma.jsp" enctype="multipart/form-data" method="post" >
                 <header class="panel-heading">
                     <center><span class="h4"><b>Actualizar Informacion de Programas</b></span></center>
                 </header>
                 <section class="panel panel-default">
                     <div class="col-md-12">
                         <div class="panel-body">
-                     <%    IControlador fachada = (IControlador) session.getAttribute("fachada");
-                            ArrayList<ProgramaDTO> dc = fachada.mostrarProgramaId(codigo);
-                            for (ProgramaDTO c : dc) {
+                            <%    IControlador fachada = (IControlador) session.getAttribute("fachada");
+                                ArrayList<ProgramaDTO> dc = fachada.mostrarProgramaId(codigo);
+                                for (ProgramaDTO c : dc) {
 
-                        %>
+                            %>
+                            <div class="col-md-12">
+                                <div class="headline margin-bottom-30"><h4>Id</h4></div>
+                                <input type="text" class="form-control" id="id" name="id" value="<%=c.getIdPrograma()%>">
+                            </div>
                             <div class="col-md-12">
                                 <div class="headline margin-bottom-30"><h4>Nombre</h4></div>
                                 <input type="text" class="form-control" id="nom_pro" name="nom_pro" value="<%=c.getNombre()%>">
@@ -88,7 +92,7 @@
                                     <input type="file" name="fichero" id="fichero">
                                 </div>
                             </div>
-                                    <% } %>
+                            <% } %>
                         </div>
                     </div>
                 </section>

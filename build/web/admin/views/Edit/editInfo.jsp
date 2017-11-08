@@ -1,9 +1,8 @@
 <%-- 
-    Document   : procinf
-    Created on : 25/09/2017, 03:24:03 PM
-    Author     : personal
+    Document   : editInfo
+    Created on : 7/11/2017, 03:22:45 PM
+    Author     : Memo
 --%>
-
 <%@page import="com.sitioweb.controller.interfaz.IControlador"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.io.File"%>
@@ -18,7 +17,7 @@
     String rutaServer = getServletContext().getRealPath("/");
     rutaServer += "/temp/facultad/";
     String url_imagen = null;
-    String codigo = null;
+    int codigo=0;
     int tipo = 0;
     String nombre = null;
     String descripcion = null;
@@ -51,7 +50,9 @@
             out.println(key);
             String valor = uploaded.getString();
             out.println(valor);
-            
+             if (key.equals("id")) {
+                codigo = Integer.parseInt(valor);
+            }
             if (key.equals("nom")) {
                 nombre = valor;
             }
@@ -76,15 +77,13 @@
     
     IControlador f = (IControlador) session.getAttribute("fachada");
     
-    boolean exito = f.registrarInformacion(descripcion, nombre, url, url_imagen, tipo);
+    boolean exito = f.actualizarDatosInformacion(codigo, descripcion, nombre, url, url_imagen, tipo);
 
     String resp = "";
     if (exito) {resp = "S";
-        response.sendRedirect("../RegistrarInfo.jsp");
+        response.sendRedirect("../ConsultarInfo.jsp");
     } else {
         resp = "Error";
     }
 %>
 <%=resp%>
-
-

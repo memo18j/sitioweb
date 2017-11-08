@@ -37,20 +37,20 @@
                             </tr>
                         </thead>
                         <tbody>
-                              <%for (ProgramaDTO st : dp) {%>
-                              <tr>
-                        <th data-field="id"><%=st.getIdPrograma()%></th>
-                        <th data-field="nombre"><%=st.getNombre()%></th>                      
-                        <th data-field="Director"><%=st.getDirector()%></th>
-                        <th data-field="Correo"><%=st.getCorreoprograma()%></th>
-                        <th data-field="Tele"><%=st.getTelefono()%></th>
-                        <th data-field="edit"><a class="btn btn-danger"style="background-color: #aa1916;"
-                        href="ModificarPrograma.jsp?id=<%=st.getIdPrograma()%>"><i class="fa fa-edit"></i></a></th>
-                        <th data-field="remove"><a class="btn btn-danger"style="background-color: #aa1916;" 
-                         href="modificarPrograma.jsp?id="><i class="fa fa-trash-o"></i></a></th>
-                              </tr>
-                        <% } %>    
-                    </tbody>
+                            <%for (ProgramaDTO st : dp) {%>
+                            <tr>
+                                <th data-field="id"><%=st.getIdPrograma()%></th>
+                                <th data-field="nombre"><%=st.getNombre()%></th>                      
+                                <th data-field="Director"><%=st.getDirector()%></th>
+                                <th data-field="Correo"><%=st.getCorreoprograma()%></th>
+                                <th data-field="Tele"><%=st.getTelefono()%></th>
+                                <th data-field="edit"><a class="btn btn-danger"style="background-color: #aa1916;"
+                                                         href="ModificarPrograma.jsp?id=<%=st.getIdPrograma()%>"><i class="fa fa-edit"></i></a></th>
+                                <th data-field="remove"><a class="btn btn-danger"style="background-color: #aa1916;" 
+                                                           href="Eliminar/EliminarPrograma.jsp?id=<%=st.getIdPrograma()%>&nombre=<%=st.getNombre()%>"<i class="fa fa-trash-o"></i></a></th>
+                            </tr>
+                            <% }%>    
+                        </tbody>
                     </table>
                 </div> 
             </div>  

@@ -18,6 +18,7 @@
     String rutaServer = getServletContext().getRealPath("/");
     rutaServer += "/temp/facultad/";
     String url_imagen = null;
+    String codigo = null;
     int tipo = 0;
     String nombre = null;
     String descripcion = null;
@@ -50,6 +51,7 @@
             out.println(key);
             String valor = uploaded.getString();
             out.println(valor);
+            
             if (key.equals("nom")) {
                 nombre = valor;
             }
@@ -77,23 +79,12 @@
     boolean exito = f.registrarInformacion(descripcion, nombre, url, url_imagen, tipo);
 
     String resp = "";
-    if (exito) {
-%>        
-<div class="alert alert-success">
-    <button class="close" data-dismiss="alert"><span>&times;</span></button>
-    <h5 style="color: white;"><b>Registro Exitoso !!!</b></h5>
-</div>
-<%
-} else {
-%>
-
-<div class="alert alert-mem">
-    <button class="close" data-dismiss="alert"><span>&times;</span></button>
-    <h5 style="color: white;"><b>Registro Fallido !!!</b></h5>
-</div>
-
-<%       //mensaje = "USUARIO O CONTRASEÑA INVALIDA";
+    if (exito) {resp = "S";
+        response.sendRedirect("../RegistrarInfo.jsp");
+    } else {
+        resp = "Error";
     }
 %>
+<%=resp%>
 
 

@@ -44,7 +44,7 @@
                                 <th data-field="edit"><a class="btn btn-danger"style="background-color: #aa1916;" 
                                                          href="ModificarNovedad.jsp?id=<%=i.getIdNovedad()%>"><i class="fa fa-edit"></i></a></th>
                                 <th data-field="remove"><a class="btn btn-danger"style="background-color: #aa1916;"
-                                                           href="EliminarNovedad.jsp?id="><i class="fa fa-trash-o"></i></a></th>
+                                                           href="Eliminar/EliminarNovedad.jsp?id=<%=i.getIdNovedad()%>"><i class="fa fa-trash-o"></i></a></th>
                             </tr>
                             <% } %> 
                         </tbody>

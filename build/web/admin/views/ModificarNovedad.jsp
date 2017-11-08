@@ -19,7 +19,7 @@
 <div class="panel-body">
     <div class="row">
         <section class="panel panel-default">
-            <form name="formNov" id="formNov" action="procesar/pronovedad.jsp" enctype="multipart/form-data" method="post" >
+            <form name="formNov" id="formNov" action="Edit/editNovedad.jsp" enctype="multipart/form-data" method="post" >
                 <header class="panel-heading">
                     <center><span class="h4"><b>Actualizar Informacion de Novedades</b></span></center>
                 </header>
@@ -29,8 +29,11 @@
                             <%    IControlador fachada = (IControlador) session.getAttribute("fachada");
                                 ArrayList<NovedadDTO> dc = fachada.mostrarNovedadId(codigo);
                                 for (NovedadDTO c : dc) {
-
                             %>
+                             <div class="col-md-6">
+                                <div class="headline margin-bottom-30"><h4>Id</h4></div>
+                                <input type="text" class="form-control" id="id" name="id" value="<%=c.getIdNovedad()%>">
+                            </div>
                             <div class="col-md-6">
                                 <div class="headline margin-bottom-30"><h4>Nombre</h4></div>
                                 <input type="text" class="form-control" id="nom" name="nom" value="<%=c.getTitulo()%>">
@@ -40,7 +43,8 @@
                                 <select class="form-control" id="tipo" name="tipo">
                                     <option value="" disabled selected>Elige una opcion</option>           
 
-                                    <%                                        IControlador f = (IControlador) session.getAttribute("fachada");
+                                    <%                                        
+                                        IControlador f = (IControlador) session.getAttribute("fachada");
                                         ArrayList<TipoNovedadDTO> ss = f.mostrarTipoNovedad();
                                         for (TipoNovedadDTO m : ss) {
                                     %>

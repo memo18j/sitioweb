@@ -17,7 +17,7 @@
 <div class="panel-body">
     <div class="row">
         <section class="panel panel-default">
-            <form name="formDpto" id="formDpto" action="procesar/procesarDpto.jsp" method="get">
+            <form name="formDpto" id="formDpto" action="Edit/editDpto.jsp" method="get">
                 <header class="panel-heading">
                     <center><span class="h4">Modificar Informacion Departamentos</span></center>
                 </header>
@@ -28,6 +28,10 @@
                                 ArrayList<DepartamentoDTO> dc = fachada.mostrarDepartamentoId(codigo);
                                 for (DepartamentoDTO c : dc) {
                             %>
+                            <div class="col-md-6">
+                                <div class="headline margin-bottom-30"><h4>Id</h4></div>
+                                <input type="text" class="form-control" id="id" name="id" value="<%=c.getIddpto()%>">
+                            </div>
                             <div class="col-md-6">
                                 <div class="headline margin-bottom-30"><h4>Nombre Departamamento</h4></div>
                                 <input type="text" class="form-control" id="nom_dep" name="nom_dep" value="<%=c.getNombre()%>">

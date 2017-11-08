@@ -302,8 +302,7 @@ public class Controlador implements IControlador {
     @Override
     public boolean actualizarDatosInformacion(int idInformacion, String descripcion, String nombre,
             String link, String imagen, int tipoinfo) throws Exception {
-        return this.informacion.actualizarInformacion(idInformacion, link, link,
-                imagen, tipoinfo);
+        return this.informacion.actualizarInformacion(idInformacion, descripcion, nombre,link, imagen, tipoinfo);
     }
 
     @Override

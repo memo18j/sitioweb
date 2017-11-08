@@ -16,7 +16,7 @@
 <div class="panel-body">
     <div class="row">
         <section class="panel ">
-            <form name="forminfo" id="forminfo" action="javascript:registrarInformacion()" enctype="multipart/form-data" method="post">
+            <form name="forminfo" id="forminfo" action="procesar/procinf.jsp" enctype="multipart/form-data" method="post">
                 <header class="panel-heading">
                     <center><span class="h4"><b>Registro Informacion de Facultad</b></span></center>
                 </header>

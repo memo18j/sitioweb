@@ -13,11 +13,13 @@
 <%
     boolean s = (Boolean) session.getAttribute("estadoSesion");
     if (s) {
+         String id = request.getParameter("id");
+        int codigo = Integer.parseInt(id);
 %>
 <div class="panel-body">
     <div class="row">
         <section class="panel ">
-            <form name="formMinfo" id="formMinfo" action="procesar/procinf.jsp" enctype="multipart/form-data" method="post">
+            <form name="formMinfo" id="formMinfo" action="Edit/editInfo.jsp" enctype="multipart/form-data" method="post">
                 <header class="panel-heading">
                     <center><span class="h4"><b>Actualizar Informacion de Facultad</b></span></center>
                 </header>
@@ -26,7 +28,7 @@
                         <div class="panel-body">
                             <%
                                   IControlador f = (IControlador) session.getAttribute("fachada");  
-                                  ArrayList<InformacionDTO> in = f.mostrarInformacion();
+                                  ArrayList<InformacionDTO> in = f.mostrarInformacionId(codigo);
                                   for(InformacionDTO i:in) {
                                 %>
                             <div class="col-md-6">
@@ -43,7 +45,11 @@
                                         }
                                     %>   
                                 </select>                                    
-                            </div>          
+                            </div>
+                            <div class="col-md-6">
+                                <div class="headline margin-bottom-30"><h4>Id</h4></div>
+                                <input type="text" class="form-control" id="id" name="id" value="<%=i.getIdInformacion()%>">   
+                            </div>    
                             <div class="col-md-6">
                                 <div class="headline margin-bottom-30"><h4>Nombre</h4></div>
                                 <input type="text" class="form-control" id="nom" name="nom" value="<%=i.getNombre()%>">   
