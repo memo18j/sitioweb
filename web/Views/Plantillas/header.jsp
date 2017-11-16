@@ -1,3 +1,5 @@
+<%@page import="com.sitioweb.model.DTO.TipoInfraestructuraDTO"%>
+<%@page import="com.sitioweb.model.DTO.TipoInvestigacionDTO"%>
 <%@page import="com.sitioweb.model.DTO.InformacionDTO"%>
 <%@page import="com.sitioweb.model.DTO.ProgramaDTO"%>
 <%@page import="java.util.ArrayList"%>
@@ -104,8 +106,8 @@
 
                                 <div class="col-md-2 col-ms-1 col-xs-2 pull-right">
                                     <a href=""><img class="header-banner"
-                                                    src="../imagenes/escudo_colombia.png"
-                                                    alt="Escudo de Colombia"></a>
+                                                    src="../imagenes/logo_ufps.png"
+                                                    alt="Escudo de la ufps" width="150px" height="150px"></a>
                                 </div>
                             </div>
                         </div>
@@ -152,8 +154,8 @@
                                             System.out.println("..." + i.getNombre());
                                     %>
                                     <li><a href="../FI/VerInformacion.jsp?id=<%=i.getIdInformacion()%>">
-                                    <i class="fa fa-angle-double-right" aria-hidden="true"></i><%=i.getNombre()%> </a></li>
-                                        <% } %>  
+                                            <i class="fa fa-angle-double-right" aria-hidden="true"></i><%=i.getNombre()%> </a></li>
+                                            <% } %>  
                                 </ul>
                             </li>
                             <!-- End Home -->
@@ -170,8 +172,8 @@
                                                 for (ProgramaDTO m : ss) {
                                             %>
                                             <li><a href="../FI/VerPrograma.jsp?id=<%=m.getIdPrograma()%>">
-                                            <i class="fa fa-angle-double-right" aria-hidden="true"></i><%=m.getNombre()%> </a></li>
-                                                <% } %>  
+                                                    <i class="fa fa-angle-double-right" aria-hidden="true"></i><%=m.getNombre()%> </a></li>
+                                                    <% } %>  
                                         </ul>
                                     </li>
                                     <li class="dropdown-submenu">
@@ -227,58 +229,79 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li class=""><a href="../FI/VerDepartamento.jsp">Departamentos</a></li>
-                                    <li class=""><a href="../FI/VerDocentes.jsp">Docentes</a></li>                                     
+                                    <li class=""><a href="../FI/verDocentes.jsp">Docentes</a></li>                                                                        
                                 </ul>
                             </li>
                             <li class="dropdown">
                                 <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
                                     Investigacion
-                                </a>
+                                </a>                               
                                 <ul class="dropdown-menu">
-                                    <li class=""><a href="../FI/vergrupos.jsp">Grupos de Investigacion</a></li>
-                                    <li class=""><a href="../investigacion/semilleros.jsp">Semilleros de Investigacion</a></li>
-                                    <li class=""><a href="../investigacion/laboratorios.jsp">Laboratorios</a></li>
-                                    <li><a href="../investigacion/proyectos.jsp">Proyectos</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
-                                    Extension
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="">Cursos Extension</a></li>
-                                    <li><a href="">Convenios</a></li>
-                                    <li><a href="">Proyectos </a></li>
-                                    <li><a href="">Actividades </a></li>                             
-                                </ul>
-                            </li>
+                                    <%
 
-                            <li class="dropdown">
-                                <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
-                                    Internacionalización
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="">Convenios</a></li>
-                                    <li><a href="">Guías y formatos</a></li>
-                                    <li><a href="">Movilidad Estudiantíl </a></li>
-                                    <li><a href="">Movilidad Docente </a></li>
-                                    <li><a href="">Extranjeros</a></li>
-                                    <li><a href="">Contacto</a></li>
+                                        ArrayList<TipoInvestigacionDTO> inv = f.mostrarTipoInvestigacion();
+                                        for (TipoInvestigacionDTO i : inv) {
+                                            System.out.println("..." + i.getNombre());
+                                    %>
+                                    <li><a href="../FI/verInvestigacion.jsp?id=<%=i.getIdTipoInvest()%>">
+                                            <i class="fa fa-angle-double-right" aria-hidden="true"></i><%=i.getNombre()%> </a></li>
+                                            <% }%>  
                                 </ul>
                             </li>
                             <li class="dropdown">
                                 <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
-                                    Graduados
+                                    Infraestructura
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="">Tramites</a></li>
-                                    <li><a href="">Oferta Laboral</a></li>
-                                    <li><a href="">Informacion x Empresas</a></li>
-                                    <li><a href="">Becas por Graduados </a></li>
-                                    <li><a href="">Encuesta</a></li>
-                                    <li><a href="">Contacto</a></li>
+                                    <%
+
+                                        ArrayList<TipoInfraestructuraDTO> inf = f.mostrarTipoInfraestructura();
+                                        for (TipoInfraestructuraDTO i : inf) {
+                                            System.out.println("..." + i.getNombre());
+                                    %>
+                                    <li><a href="../FI/verInfraestructura.jsp?id=<%=i.getIdTipoInfra()%>">
+                                            <i class="fa fa-angle-double-right" aria-hidden="true"></i><%=i.getNombre()%> </a></li>
+                                            <% }%>  
                                 </ul>
-                            </li>
+                        </li>
+                        <li class="dropdown">
+                            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+                                Extension
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="">Cursos Extension</a></li>
+                                <li><a href="">Convenios</a></li>
+                                <li><a href="">Proyectos </a></li>
+                                <li><a href="">Actividades </a></li>                             
+                            </ul>
+                        </li>
+
+                        <li class="dropdown">
+                            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+                                Internacionalización
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="">Convenios</a></li>
+                                <li><a href="">Guías y formatos</a></li>
+                                <li><a href="">Movilidad Estudiantíl </a></li>
+                                <li><a href="">Movilidad Docente </a></li>
+                                <li><a href="">Extranjeros</a></li>
+                                <li><a href="">Contacto</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+                                Graduados
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="">Tramites</a></li>
+                                <li><a href="">Oferta Laboral</a></li>
+                                <li><a href="">Informacion x Empresas</a></li>
+                                <li><a href="">Becas por Graduados </a></li>
+                                <li><a href="">Encuesta</a></li>
+                                <li><a href="">Contacto</a></li>
+                            </ul>
+                        </li>
 
                         </ul>
                     </div>

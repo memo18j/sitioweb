@@ -207,19 +207,7 @@
                                                         </a>
 
                                                     </li>
-                                                    <li >
-                                                        <a href="" >                        
-                                                            <i class="fa fa-arrow-circle-o-right"></i>
-                                                            <span>Registrar Tipo Investigacion </span>
-                                                        </a>
-                                                    </li>
-                                                    <li >
-                                                        <a href="#" > 
-                                                            <i class="fa fa-arrow-circle-o-right"></i>
-                                                            <span>Consultar Tipo Investigacion</span>
-                                                        </a>
-
-                                                    </li>
+                                                    
                                                 </ul>
                                             </li>
                                             <li >
@@ -261,15 +249,15 @@
                                                 </a>
                                                 <ul class="nav lt">
                                                     <li>
-                                                        <a href="../paginas/res_list.jsp">
+                                                        <a href="../views/RegistrarExtension.jsp">
                                                             <i class="fa fa-arrow-circle-o-right"></i>
-                                                            <span>Registrar Usuario</span>
+                                                            <span>Registrar Extension</span>
                                                         </a>
                                                     </li>
                                                     <li>
-                                                        <a href="../paginas/res_list.jsp">
+                                                        <a href="../views/ConsultarExtension.jsp">
                                                             <i class="fa fa-arrow-circle-o-right"></i>
-                                                            <span>Consultar usuarios</span>
+                                                            <span>Consultar Extension</span>
                                                         </a>
                                                     </li>
                                                 </ul>
@@ -283,19 +271,19 @@
                                                         <i class="fa fa-angle-down text"></i>
                                                         <i class="fa fa-angle-up text-active"></i>
                                                     </span>
-                                                    <span>Internacional</span>
+                                                    <span>Internacionaliazion</span>
                                                 </a>
                                                 <ul class="nav lt">
                                                     <li>
-                                                        <a href="../paginas/res_list.jsp">
+                                                        <a href="../views/RegistrarInternacionalizacion.jsp">
                                                             <i class="fa fa-arrow-circle-o-right"></i>
-                                                            <span>Registrar Usuario</span>
+                                                            <span>Registrar Internacionalizacion</span>
                                                         </a>
                                                     </li>
                                                     <li>
-                                                        <a href="../paginas/res_list.jsp">
+                                                        <a href="../views/ConsultarInternacionalizacion.jsp">
                                                             <i class="fa fa-arrow-circle-o-right"></i>
-                                                            <span>Consultar usuarios</span>
+                                                            <span>Consultar Internacionalizacion</span>
                                                         </a>
                                                     </li>
                                                 </ul>

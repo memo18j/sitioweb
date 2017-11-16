@@ -9,10 +9,12 @@ import com.sitioweb.controller.interfaz.IControlador;
 import com.sitioweb.model.DAO.MySQLDepartamentoDAO;
 import com.sitioweb.model.DAO.MySQLDocenteDAO;
 import com.sitioweb.model.DAO.MySQLDocumentoDAO;
+import com.sitioweb.model.DAO.MySQLExtensionDAO;
 import com.sitioweb.model.DAO.MySQLFacultadDAO;
 import com.sitioweb.model.DAO.MySQLGrupoDAO;
 import com.sitioweb.model.DAO.MySQLInformacionDAO;
 import com.sitioweb.model.DAO.MySQLInfraestructuraDAO;
+import com.sitioweb.model.DAO.MySQLInternacionalizacionDAO;
 import com.sitioweb.model.DAO.MySQLInvestigacionDAO;
 import com.sitioweb.model.DAO.MySQLLabotorioDAO;
 import com.sitioweb.model.DAO.MySQLNovedadDAO;
@@ -21,8 +23,10 @@ import com.sitioweb.model.DAO.MySQLProgramaDAO;
 import com.sitioweb.model.DAO.MySQLProyectoInvestDAO;
 import com.sitioweb.model.DAO.MySQLSemilleroDAO;
 import com.sitioweb.model.DAO.MySQLSesionDAO;
+import com.sitioweb.model.DAO.MySQLTipoExtensionDAO;
 import com.sitioweb.model.DAO.MySQLTipoInfoDAO;
 import com.sitioweb.model.DAO.MySQLTipoInfraestructuraDAO;
+import com.sitioweb.model.DAO.MySQLTipoInternacionalizacionDAO;
 import com.sitioweb.model.DAO.MySQLTipoInvestigacionDAO;
 import com.sitioweb.model.DAO.MySQLTipoNovedadDAO;
 import com.sitioweb.model.DAO.MySQLTipoPregramaDAO;
@@ -30,10 +34,12 @@ import com.sitioweb.model.DAO.MySQLUsuarioDAO;
 import com.sitioweb.model.DTO.DepartamentoDTO;
 import com.sitioweb.model.DTO.DocenteDTO;
 import com.sitioweb.model.DTO.DocumentoDTO;
+import com.sitioweb.model.DTO.ExtensionDTO;
 import com.sitioweb.model.DTO.FacultadDTO;
 import com.sitioweb.model.DTO.GrupoDTO;
 import com.sitioweb.model.DTO.InformacionDTO;
 import com.sitioweb.model.DTO.InfraestructuraDTO;
+import com.sitioweb.model.DTO.InternacionalizacionDTO;
 import com.sitioweb.model.DTO.InvestigacionDTO;
 import com.sitioweb.model.DTO.LaboratorioDTO;
 import com.sitioweb.model.DTO.NovedadDTO;
@@ -41,8 +47,10 @@ import com.sitioweb.model.DTO.PestanaDTO;
 import com.sitioweb.model.DTO.ProgramaDTO;
 import com.sitioweb.model.DTO.ProyectoInvestDTO;
 import com.sitioweb.model.DTO.SemilleroDTO;
+import com.sitioweb.model.DTO.TipoExtensionDTO;
 import com.sitioweb.model.DTO.TipoInfoDTO;
 import com.sitioweb.model.DTO.TipoInfraestructuraDTO;
+import com.sitioweb.model.DTO.TipoInternacionalizacionDTO;
 import com.sitioweb.model.DTO.TipoInvestigacionDTO;
 import com.sitioweb.model.DTO.TipoNovedadDTO;
 import com.sitioweb.model.DTO.TipoProgramaDTO;
@@ -50,10 +58,12 @@ import com.sitioweb.model.DTO.UsuarioDTO;
 import com.sitioweb.model.interfaz.IDepartamento;
 import com.sitioweb.model.interfaz.IDocente;
 import com.sitioweb.model.interfaz.IDocumento;
+import com.sitioweb.model.interfaz.IExtension;
 import com.sitioweb.model.interfaz.IFacultad;
 import com.sitioweb.model.interfaz.IGrupo;
 import com.sitioweb.model.interfaz.IInformacion;
 import com.sitioweb.model.interfaz.IInfraestructura;
+import com.sitioweb.model.interfaz.IInternacionalizacion;
 import com.sitioweb.model.interfaz.IInvestigacion;
 import com.sitioweb.model.interfaz.ILaboratorio;
 import com.sitioweb.model.interfaz.INovedad;
@@ -62,8 +72,10 @@ import com.sitioweb.model.interfaz.IPrograma;
 import com.sitioweb.model.interfaz.IProyectoInvest;
 import com.sitioweb.model.interfaz.ISemillero;
 import com.sitioweb.model.interfaz.ISesion;
+import com.sitioweb.model.interfaz.ITipoExtension;
 import com.sitioweb.model.interfaz.ITipoInfo;
 import com.sitioweb.model.interfaz.ITipoInfraestructura;
+import com.sitioweb.model.interfaz.ITipoInternacionalizacion;
 import com.sitioweb.model.interfaz.ITipoInvestigacion;
 import com.sitioweb.model.interfaz.ITipoNovedad;
 import com.sitioweb.model.interfaz.ITipoPrograma;
@@ -103,6 +115,10 @@ public class Controlador implements IControlador {
     private final IInfraestructura infraestructura;
     private final ITipoInvestigacion tipoInvest;
     private final ITipoInfraestructura tipoInfra;
+    private final IExtension extension;
+    private final ITipoExtension tipoExt;
+    private final IInternacionalizacion inter;
+    private final ITipoInternacionalizacion tipoInter;
 
     public Controlador() {
         this.sesion = new MySQLSesionDAO();
@@ -126,6 +142,10 @@ public class Controlador implements IControlador {
         this.infraestructura = new MySQLInfraestructuraDAO();
         this.tipoInvest = new MySQLTipoInvestigacionDAO();
         this.tipoInfra = new MySQLTipoInfraestructuraDAO();
+        this.extension = new MySQLExtensionDAO();
+        this.tipoExt = new MySQLTipoExtensionDAO();
+        this.tipoInter = new MySQLTipoInternacionalizacionDAO();
+        this.inter = new MySQLInternacionalizacionDAO();
     }
 
     @Override
@@ -134,7 +154,7 @@ public class Controlador implements IControlador {
         FileWriter fichero = null;
         PrintWriter pw = null;
         try {
-            fichero = new FileWriter("C:/Users/personal/Downloads/SitioWeb2/contador.txt");
+            fichero = new FileWriter("D:/SitioWeb2/contador.txt");
             //fichero = new FileWriter("../contador.txt");
             pw = new PrintWriter(fichero);
             pw.println(cantVisitas + "");
@@ -152,7 +172,6 @@ public class Controlador implements IControlador {
             }
         }
     }
-
     @Override
     public int mostrarVisitas() throws Exception {
         int n = 0;
@@ -162,7 +181,7 @@ public class Controlador implements IControlador {
         try {
             // Apertura del fichero y creacion de BufferedReader para poder
             // hacer una lectura comoda (disponer del metodo readLine()).
-            archivo = new File("C:/Users/personal/Downloads/SitioWeb2/contador.txt");
+            archivo = new File("D:/SitioWeb2/contador.txt");
             //archivo = new File("../contador.txt");
             fr = new FileReader(archivo);
             br = new BufferedReader(fr);
@@ -696,4 +715,103 @@ public class Controlador implements IControlador {
                 descripcion, tipo);
     }
 
+    @Override
+    public boolean registrarTipoExt(String descripcion) throws Exception {
+        TipoExtensionDTO tipext = new TipoExtensionDTO(descripcion);
+        return this.tipoExt.registrarTipoExt(tipext);
+    }
+
+    @Override
+    public ArrayList<TipoExtensionDTO> mostrarTipoExt() throws Exception {
+        return this.tipoExt.mostrarTipoExt();
+    }
+
+    @Override
+    public boolean actualizarDatosTipoExt(int idtipo, String descripcion) throws Exception {
+        return this.tipoExt.actualizarTipoExt(idtipo, descripcion);
+    }
+
+    @Override
+    public boolean registrarExtension(int tipoext, String descripcion, String nombre, String link, 
+            String documento) throws Exception {
+        ExtensionDTO ext = new ExtensionDTO(tipoext, descripcion, nombre, link, documento);
+        return this.extension.registrarExtension(ext);
+    }
+
+    @Override
+    public boolean eliminarExtension(int idExtension, String nombre) throws Exception {
+        System.out.println("---" + idExtension + "--" + nombre);
+        ExtensionDTO dto = new ExtensionDTO();
+        dto.setIdExtension(idExtension);
+        dto.setNombre(nombre);
+
+        return this.extension.eliminarExtension(dto);
+    }
+
+    @Override
+    public ArrayList<ExtensionDTO> mostrarExtension() throws Exception {
+        return this.extension.mostrarExtension();
+    }
+
+    @Override
+    public ArrayList<ExtensionDTO> mostrarExtensionId(int idExtension) throws Exception {
+        return this.extension.mostrarExtensionId(idExtension);
+    }
+
+    @Override
+    public boolean actualizarDatosExtension(int idExtension, int tipoext, String descripcion, 
+            String nombre, String link, String documento) throws Exception {
+        return this.extension.actualizarExtension(idExtension, tipoext, descripcion, nombre, link, documento);
+    }
+
+    @Override
+    public boolean registrarTipoInter(String descripcion) throws Exception {
+        TipoInternacionalizacionDTO inter = new TipoInternacionalizacionDTO(descripcion);
+        return this.tipoInter.registrarTipoInternac(inter);
+    }
+
+    @Override
+    public ArrayList<TipoInternacionalizacionDTO> mostrarTipoInter() throws Exception {
+        return this.tipoInter.mostrarTipoInternac();
+    }
+
+    @Override
+    public boolean actualizarDatosTipoInter(int idTipoInternac, String descripcion) throws Exception {
+        return this.tipoInter.actualizarTipoInternac(idTipoInternac, descripcion);
+    }
+
+    @Override
+    public boolean registrarInter(int tipointer, String descripcion, String nombre, 
+            String link, String imagen) throws Exception {
+        InternacionalizacionDTO internac = new InternacionalizacionDTO(tipointer, descripcion, 
+                nombre, link, imagen);
+        return this.inter.registrarInternacionalizacion(internac);
+    }
+
+    @Override
+    public ArrayList<InternacionalizacionDTO> mostrarInter() throws Exception {
+        return this.inter.mostrarInternacionalizacion();
+    }
+
+    @Override
+    public ArrayList<InternacionalizacionDTO> mostrarInterId(int idInternac) throws Exception {
+        return this.inter.mostrarInternacionalizacionId(idInternac);
+    }
+
+    @Override
+    public boolean eliminarInter(int idInternac, String nombre) throws Exception {
+        System.out.println("---" + idInternac + "--" + nombre);
+        InternacionalizacionDTO dto = new InternacionalizacionDTO();
+        dto.setIdInternac(idInternac);
+        dto.setNombre(nombre);
+
+        return this.inter.eliminarInternacionalizacion(dto);
+    }
+
+    @Override
+    public boolean actualizarInter(int idInternac, int tipointer, String descripcion, 
+            String nombre, String link, String imagen) throws Exception {
+        return this.inter.actualizarInternacionalizacion(idInternac, tipointer, descripcion, 
+                nombre, link, imagen);
+    }
 }

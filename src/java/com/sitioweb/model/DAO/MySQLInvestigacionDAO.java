@@ -202,7 +202,7 @@ public class MySQLInvestigacionDAO implements IInvestigacion{
                     & !lineainvest.equalsIgnoreCase("") & !director.equalsIgnoreCase("")
                     & !estatus.equalsIgnoreCase("") & !link.equalsIgnoreCase("") &
                     tipo!=0) {
-                stmt = conn.prepareStatement("UPDATE grupoinvestigacion SET nombre='" + nombre + 
+                stmt = conn.prepareStatement("UPDATE investigacion SET nombre='" + nombre + 
                         "', director='" + director + "', correo='" + correo + "', lineainvest='" + 
                         lineainvest + "', estatus='" + estatus + "', link='" + link + "', tipo=" + tipo
                         + " WHERE idInvestigacion=" + idInvestigacion);

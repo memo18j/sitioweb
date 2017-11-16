@@ -19,7 +19,7 @@
 <div class="panel-body">
     <div class="row">
         <section class="panel panel-default">
-            <form name="formHabitacion" id="formHabitacion" action="procesar/ModificarDocente.jsp" method="post">
+            <form name="formHabitacion" id="formHabitacion" action="Edit/editDocente.jsp" method="post">
                 <header class="panel-heading">
                     <center><span class="h4">Modificar Informacion Docentes</span></center>
                 </header>
@@ -30,6 +30,10 @@
                                 ArrayList<DocenteDTO> dc = fachada.mostrarDocenteId(codigo);
                                 for (DocenteDTO c : dc) {
                             %>
+                            <div class="col-md-12">
+                                <div class="headline margin-bottom-30"><h4>Id Docente</h4></div>
+                                <input type="text" class="form-control" id="id" name="id" value="<%=c.getIdDocente()%>">
+                            </div>
                             <div class="col-md-12">
                                 <div class="headline margin-bottom-30"><h4>Nombre Docente</h4></div>
                                 <input type="text" class="form-control" id="nom_doc" name="nom_doc" value="<%=c.getNombre()%>">

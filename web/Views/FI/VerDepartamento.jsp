@@ -41,44 +41,31 @@
     </div>
     <div class="container content profile">
         <div class="row">
-            <div class="col-md-4">
 
-                <div class="shadow-wrapper">        
-
-                    <div class="margin-top-20"><h2 style="color:#AA1916;"><b>Menú de Información</b></h2></div>
-                    <ul class="nav nav-pills nav-stacked list-group sidebar-nav-v1" id="sidebar-nav">
-                        <li class="list-group-item" style="border:none; border-bottom: 1px solid #DDDEDF;"><a href="mision.jsp" class="text-menu"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i> Mision</a></li>             
-                    </ul>
-
-                </div>
-            </div><!--/col-md-3-->
             <div class="col-md-8 mb-margin-bottom-30">
-                <small class="pull-right" style="color:#aa1916;"><i
-                        class="fa fa-calendar"></i></small>
+                <br>
+                <br>
                 <div class="margin-bottom-40">
                     <%
                         IControlador f = (IControlador) session.getAttribute("fachada");
                         ArrayList<DepartamentoDTO> dp = f.mostrarDepartamento();
-
-
                     %>
-                    <div class="headline margin-bottom-30"><h1>DEPARTAMENTOS</h1></div>
                     <div>
-                        <%  for (DepartamentoDTO p : dp) { %>
+                        <%  for (DepartamentoDTO p : dp) {%>
                         <div class="panel-group acc-v1" id="accordion-2">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h4 class="panel-title"><b>
                                             <a class="accordion-toggle menu-acordeon" data-toggle="collapse"
-                                               data-parent="#accordion-2"
-                                               href="#collapse-4">
+                                               data-parent=""
+                                               href="#<%= p.getIddpto()%>" aria-expanded="false">
                                                 <span aria-hidden="true"
-                                                      class="icon-users"></span><%=p.getNombre()%></a></b>
+                                                      ></span><%=p.getNombre()%></a></b>
                                     </h4>
                                 </div>
                                 <div
-                                    id="collapse-4"
-                                    class="panel-collapse collapse in">
+                                    id="<%= p.getIddpto()%>"
+                                    class="panel-collapse collapse" aria-expanded="false">
                                     <div class="panel-body">
                                         <div class="row">
                                             <div class="col-md-12">
@@ -95,11 +82,23 @@
                                 </div>
                             </div>
                         </div>
-                        <% } %>
+                        <% }%>
                     </div>
-                   
                 </div>
             </div>
+            <div class="col-md-4">
+                <div class="shadow-wrapper">        
+                    <div class="margin-top-20"><h2 style="color:#AA1916;"><b>Novedades</b></h2></div>
+                    <ul class="nav nav-pills nav-stacked list-group sidebar-nav-v1" id="sidebar-nav">
+                        <li class="list-group-item" style="border:none; border-bottom: 1px solid #DDDEDF;">
+                            <a href="" class="text-menu"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i> Noticias</a></li>
+                        <li class="list-group-item" style="border:none; border-bottom: 1px solid #DDDEDF;">
+                            <a href="" class="text-menu"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i> Eventos</a></li>
+                        <li class="list-group-item" style="border:none; border-bottom: 1px solid #DDDEDF;">
+                            <a href="" class="text-menu"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i> Actividades</a></li>               
+                    </ul>
+                </div>
+            </div><!--/col-md-3-->
             <hr class="devider devider-dotted">
         </div>
     </div>

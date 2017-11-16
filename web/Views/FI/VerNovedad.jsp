@@ -54,8 +54,11 @@
                     <% for(NovedadDTO e :dp) { %>
                     <h4><label><%=e.getTitulo()%></label></h4>
                     <div aling="center"class="img-intro-right">
-                        <img id="zoom_01" width="500" max-width="400" height="600"  
-                             src="<%= e.getLinkimg()%>"/>
+                        <figure>
+                           <img id="zoom_01" width="500" max-width="400" height="600"  
+                             src="<%= e.getLinkimg()%>"/> 
+                        </figure>
+                        
                     </div>
                     <br>
                              <strong>Fecha: </strong><%=e.getFecha()%> 

@@ -8,10 +8,12 @@ package com.sitioweb.controller.interfaz;
 import com.sitioweb.model.DTO.DepartamentoDTO;
 import com.sitioweb.model.DTO.DocenteDTO;
 import com.sitioweb.model.DTO.DocumentoDTO;
+import com.sitioweb.model.DTO.ExtensionDTO;
 import com.sitioweb.model.DTO.FacultadDTO;
 import com.sitioweb.model.DTO.GrupoDTO;
 import com.sitioweb.model.DTO.InformacionDTO;
 import com.sitioweb.model.DTO.InfraestructuraDTO;
+import com.sitioweb.model.DTO.InternacionalizacionDTO;
 import com.sitioweb.model.DTO.InvestigacionDTO;
 import com.sitioweb.model.DTO.LaboratorioDTO;
 import com.sitioweb.model.DTO.NovedadDTO;
@@ -19,8 +21,10 @@ import com.sitioweb.model.DTO.PestanaDTO;
 import com.sitioweb.model.DTO.ProgramaDTO;
 import com.sitioweb.model.DTO.ProyectoInvestDTO;
 import com.sitioweb.model.DTO.SemilleroDTO;
+import com.sitioweb.model.DTO.TipoExtensionDTO;
 import com.sitioweb.model.DTO.TipoInfoDTO;
 import com.sitioweb.model.DTO.TipoInfraestructuraDTO;
+import com.sitioweb.model.DTO.TipoInternacionalizacionDTO;
 import com.sitioweb.model.DTO.TipoInvestigacionDTO;
 import com.sitioweb.model.DTO.TipoNovedadDTO;
 import com.sitioweb.model.DTO.TipoProgramaDTO;
@@ -248,4 +252,44 @@ public interface IControlador {
     
     public boolean actualizarInfraestructura(int idInfra, String nombre, String ubicacion, 
             String descripcion, int tipo) throws Exception;
+    
+    //TipoExtension
+    public boolean registrarTipoExt(String descripcion) throws Exception;
+
+    public ArrayList<TipoExtensionDTO> mostrarTipoExt() throws Exception;
+
+    public boolean actualizarDatosTipoExt(int idtipo, String descripcion) throws Exception;
+
+    //Extension
+    public boolean registrarExtension(int tipoext, String descripcion, String nombre, String link, 
+            String documento) throws Exception;
+    
+    public boolean eliminarExtension(int idExtension, String nombre) throws Exception;
+
+    public ArrayList<ExtensionDTO> mostrarExtension() throws Exception;
+    
+    public ArrayList<ExtensionDTO> mostrarExtensionId(int idExtension) throws Exception;
+
+    public boolean actualizarDatosExtension(int idExtension, int tipoext, String descripcion, String nombre,
+            String link, String documento) throws Exception;
+    
+    //TipoInternacionalizacion
+    public boolean registrarTipoInter(String descripcion) throws Exception;
+
+    public ArrayList<TipoInternacionalizacionDTO> mostrarTipoInter() throws Exception;
+
+    public boolean actualizarDatosTipoInter(int idTipoInternac, String descripcion) throws Exception;
+    
+    //Internacionalizacion
+    public boolean registrarInter(int tipointer, String descripcion, String nombre, 
+            String link, String imagen) throws Exception;
+    
+    public ArrayList<InternacionalizacionDTO> mostrarInter() throws Exception;
+    
+    public ArrayList<InternacionalizacionDTO> mostrarInterId(int idInternac) throws Exception;
+    
+    public boolean eliminarInter(int idInternac, String nombre) throws Exception;
+    
+    public boolean actualizarInter(int idInternac, int tipointer, String descripcion, String nombre, 
+            String link, String imagen) throws Exception;
 }

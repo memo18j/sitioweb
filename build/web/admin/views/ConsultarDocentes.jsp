@@ -43,7 +43,7 @@
                                 <th data-field="edit"><a class="btn btn-danger"style="background-color: #aa1916;" 
                                                          href="ModificarDocente.jsp?id=<%=i.getIdDocente()%>"><i class="fa fa-edit"></i></a></th>
                                 <th data-field="remove"><a class="btn btn-danger"style="background-color: #aa1916;"
-                                                           href="EliminarDocente.jsp?id="><i class="fa fa-trash-o"></i></a></th>
+                                                           href="Eliminar/EliminarDocente.jsp?id=<%=i.getIdDocente()%>&nombre=<%=i.getNombre()%>"><i class="fa fa-trash-o"></i></a></th>
                             </tr>
                             <% } %> 
                         </tbody>
