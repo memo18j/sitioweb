@@ -69,7 +69,9 @@ public class MySQLInvestigacionDAO implements IInvestigacion{
         ResultSet res = null;
         try {
             conn = Conexion.conectar();
-            stmt = conn.prepareStatement("SELECT * FROM investigacion");
+            stmt = conn.prepareStatement("SELECT i.idinvestigacion, i.nombre, i.director, "
+                    + "i.correo, i.lineainvest, i.estatus, i.link,i.tipo, ti.nombre FROM investigacion i, "
+                    + "tipoinvest ti WHERE i.tipo=ti.idtipoinvest");
             res = stmt.executeQuery();
             while (res.next()) {
                 usu = new InvestigacionDTO();
@@ -81,6 +83,7 @@ public class MySQLInvestigacionDAO implements IInvestigacion{
                 usu.setEstatus(res.getString(6));            
                 usu.setLink(res.getString(7));
                 usu.setTipo(res.getInt(8));
+                usu.setTnombre(res.getString(9));
                 list.add(usu);
             }
             stmt.close();
@@ -103,19 +106,22 @@ public class MySQLInvestigacionDAO implements IInvestigacion{
         ResultSet res = null;
         try {
             conn = Conexion.conectar();
-            stmt = conn.prepareStatement("SELECT * FROM investigacion WHERE idinvestigacion=" 
+            stmt = conn.prepareStatement("SELECT i.idinvestigacion, i.nombre, i.director, "
+                    + "i.correo, i.lineainvest, i.estatus, i.link,i.tipo, ti.nombre FROM investigacion i, "
+                    + "tipoinvest ti WHERE i.tipo=ti.idtipoinvest AND idinvestigacion=" 
                     + idInvestigacion);
             res = stmt.executeQuery();
             while (res.next()) {
                 usu = new InvestigacionDTO();
-                usu.setIdInvestigacion(res.getInt(1));
+               usu.setIdInvestigacion(res.getInt(1));
                 usu.setNombre(res.getString(2));
                 usu.setDirector(res.getString(3));
                 usu.setCorreo(res.getString(4));
                 usu.setLineainvest(res.getString(5));
-                usu.setEstatus(res.getString(6));               
+                usu.setEstatus(res.getString(6));            
                 usu.setLink(res.getString(7));
                 usu.setTipo(res.getInt(8));
+                usu.setTnombre(res.getString(9));
                 list.add(usu);
             }
             stmt.close();
@@ -138,7 +144,9 @@ public class MySQLInvestigacionDAO implements IInvestigacion{
         ResultSet res = null;
         try {
             conn = Conexion.conectar();
-            stmt = conn.prepareStatement("SELECT * FROM investigacion WHERE tipo=" + tipo);
+            stmt = conn.prepareStatement("SELECT i.idinvestigacion, i.nombre, i.director, "
+                    + "i.correo, i.lineainvest, i.estatus, i.link,i.tipo, ti.nombre FROM investigacion i, "
+                    + "tipoinvest ti WHERE i.tipo=ti.idtipoinvest AND tipo=" + tipo);
             res = stmt.executeQuery();
             while (res.next()) {
                 usu = new InvestigacionDTO();
@@ -147,9 +155,10 @@ public class MySQLInvestigacionDAO implements IInvestigacion{
                 usu.setDirector(res.getString(3));
                 usu.setCorreo(res.getString(4));
                 usu.setLineainvest(res.getString(5));
-                usu.setEstatus(res.getString(6));          
+                usu.setEstatus(res.getString(6));            
                 usu.setLink(res.getString(7));
                 usu.setTipo(res.getInt(8));
+                usu.setTnombre(res.getString(9));
                 list.add(usu);
             }
             stmt.close();

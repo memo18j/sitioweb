@@ -26,11 +26,11 @@
                 <section class="panel panel-default">
                     <div class="col-md-12">
                         <div class="panel-body">
-                         <%
-                                  IControlador f = (IControlador) session.getAttribute("fachada");  
-                                  ArrayList<InternacionalizacionDTO> in = f.mostrarInterId(codigo);
-                                  for(InternacionalizacionDTO i:in) {
-                                %>
+                            <%
+                                IControlador f = (IControlador) session.getAttribute("fachada");
+                                ArrayList<InternacionalizacionDTO> in = f.mostrarInterId(codigo);
+                                for (InternacionalizacionDTO i : in) {
+                            %>
                             <div class="col-md-12">
                                 <div class="headline margin-bottom-30"><h4>Id Internacionalizacion</h4></div>
                                 <input type="text" class="form-control" id="id" name="id" value="<%=i.getIdInternac()%>">
@@ -42,8 +42,8 @@
                             <div class="col-md-6">
                                 <div class="headline margin-bottom-30"><h4>Tipo Internacionalizacion</h4></div>
                                 <select class="form-control" id="tipo" name="tipo">
-                                    <option value="" disabled selected>Elige una opcion</option>           
-                                    <%                          
+                                    <option value="<%=i.getTipointer()%>"><%=i.getTnombre()%></option>            
+                                    <%
                                         ArrayList<TipoInternacionalizacionDTO> ss = f.mostrarTipoInter();
                                         for (TipoInternacionalizacionDTO m : ss) {
                                     %>
@@ -60,14 +60,14 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="headline margin-bottom-30"><h4>Descripcion</h4></div>
-                                <textarea cols=70  rows=10 type="text" id="linea" name="linea"><%=i.getIdInternac()%></textarea>
+                                <textarea cols=70  rows=10 type="text" id="linea" name="linea"><%=i.getDescripcion()%></textarea>
                             </div>
                             <div class="file-field input-field col-md-6">
                                 <div class="headline margin-bottom-30"><h4>Imagen</h4>
                                     <input type="file" name="fichero" id="fichero">
                                 </div>
                             </div>
-                                    <% } %>
+                            <% } %>
                         </div>
                     </div>
                 </section>

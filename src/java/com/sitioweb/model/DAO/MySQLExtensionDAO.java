@@ -66,16 +66,19 @@ public class MySQLExtensionDAO implements IExtension{
         ResultSet res = null;
         try {
             conn = Conexion.conectar();
-            stmt = conn.prepareStatement("SELECT * FROM extension");
+            stmt = conn.prepareStatement("SELECT e.idextension,e.tipoext, te.descripcion, e.descripcion, "
+                    + "e.nombre, e.link, e.documento FROM extension e, tipoextension te WHERE "
+                    + "e.tipoext=te.idtipo");
             res = stmt.executeQuery();
             while (res.next()) {
                 usu = new ExtensionDTO();
                 usu.setIdExtension(res.getInt(1));
                 usu.setTipoext(res.getInt(2));
-                usu.setDescripcion(res.getString(3));
-                usu.setNombre(res.getString(4));
-                usu.setLink(res.getString(5));
-                usu.setDocumento(res.getString(6));
+                usu.setTnombre(res.getString(3));
+                usu.setDescripcion(res.getString(4));
+                usu.setNombre(res.getString(5));
+                usu.setLink(res.getString(6));
+                usu.setDocumento(res.getString(7));
                 list.add(usu);
             }
             stmt.close();
@@ -98,17 +101,56 @@ public class MySQLExtensionDAO implements IExtension{
         ResultSet res = null;
         try {
             conn = Conexion.conectar();
-            stmt = conn.prepareStatement("SELECT * FROM extension WHERE idextension=" 
+            stmt = conn.prepareStatement("SELECT e.idextension,e.tipoext, te.descripcion, e.descripcion, "
+                    + "e.nombre, e.link, e.documento FROM extension e, tipoextension te WHERE "
+                    + "e.tipoext=te.idtipo AND idextension=" 
                     + idExtension);
             res = stmt.executeQuery();
             while (res.next()) {
                 usu = new ExtensionDTO();
                 usu.setIdExtension(res.getInt(1));
                 usu.setTipoext(res.getInt(2));
-                usu.setDescripcion(res.getString(3));
-                usu.setNombre(res.getString(4));
-                usu.setLink(res.getString(5));
-                usu.setDocumento(res.getString(6));
+                usu.setTnombre(res.getString(3));
+                usu.setDescripcion(res.getString(4));
+                usu.setNombre(res.getString(5));
+                usu.setLink(res.getString(6));
+                usu.setDocumento(res.getString(7));
+                list.add(usu);
+            }
+            stmt.close();
+            res.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return list;
+    }
+    
+    @Override
+    public ArrayList<ExtensionDTO> mostrarExtensionTipo(int tipo) throws Exception {
+        ArrayList<ExtensionDTO> list = new ArrayList();
+        PreparedStatement stmt = null;
+        ExtensionDTO usu = null;
+        ResultSet res = null;
+        try {
+            conn = Conexion.conectar();
+            stmt = conn.prepareStatement("SELECT e.idextension,e.tipoext, te.descripcion, e.descripcion, "
+                    + "e.nombre, e.link, e.documento FROM extension e, tipoextension te WHERE "
+                    + "e.tipoext=te.idtipo AND tipoext=" 
+                    + tipo);
+            res = stmt.executeQuery();
+            while (res.next()) {
+                usu = new ExtensionDTO();
+                usu.setIdExtension(res.getInt(1));
+                usu.setTipoext(res.getInt(2));
+                usu.setTnombre(res.getString(3));
+                usu.setDescripcion(res.getString(4));
+                usu.setNombre(res.getString(5));
+                usu.setLink(res.getString(6));
+                usu.setDocumento(res.getString(7));
                 list.add(usu);
             }
             stmt.close();

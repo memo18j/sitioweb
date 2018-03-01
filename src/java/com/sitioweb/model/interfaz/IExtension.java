@@ -17,6 +17,7 @@ public interface IExtension {
     public boolean registrarExtension(ExtensionDTO dto) throws Exception;
     public ArrayList<ExtensionDTO> mostrarExtension() throws Exception;
     public ArrayList<ExtensionDTO> mostrarExtensionId(int idExtension) throws Exception;
+    public ArrayList<ExtensionDTO> mostrarExtensionTipo(int tipo) throws Exception;
     public boolean eliminarExtension(ExtensionDTO dto) throws Exception;
     public boolean actualizarExtension(int idExtension, int tipoext, String descripcion, String nombre, 
             String link, String documento) throws Exception;

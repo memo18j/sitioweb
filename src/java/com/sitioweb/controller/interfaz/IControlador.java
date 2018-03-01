@@ -10,6 +10,7 @@ import com.sitioweb.model.DTO.DocenteDTO;
 import com.sitioweb.model.DTO.DocumentoDTO;
 import com.sitioweb.model.DTO.ExtensionDTO;
 import com.sitioweb.model.DTO.FacultadDTO;
+import com.sitioweb.model.DTO.GraduadoDTO;
 import com.sitioweb.model.DTO.GrupoDTO;
 import com.sitioweb.model.DTO.InformacionDTO;
 import com.sitioweb.model.DTO.InfraestructuraDTO;
@@ -23,6 +24,7 @@ import com.sitioweb.model.DTO.ProyectoInvestDTO;
 import com.sitioweb.model.DTO.SemilleroDTO;
 import com.sitioweb.model.DTO.TipoExtensionDTO;
 import com.sitioweb.model.DTO.TipoInfoDTO;
+import com.sitioweb.model.DTO.TipoInfoGraduadoDTO;
 import com.sitioweb.model.DTO.TipoInfraestructuraDTO;
 import com.sitioweb.model.DTO.TipoInternacionalizacionDTO;
 import com.sitioweb.model.DTO.TipoInvestigacionDTO;
@@ -165,6 +167,8 @@ public interface IControlador {
     
     public ArrayList<ProgramaDTO> mostrarProgramaId(int idPrograma) throws Exception;
     
+    public ArrayList<ProgramaDTO> mostrarProgramaTipo(int tipo) throws Exception;
+    
     public boolean eliminarPrograma(int id, String nombre) throws Exception;
 
     public boolean actualizarPrograma(int idPrograma, String nombre, int tipo, String director, 
@@ -240,7 +244,7 @@ public interface IControlador {
     
     //Infraestructura
     public boolean registrarInfraestructura(String nombre, String ubicacion, String descripcion, 
-            int tipo) throws Exception;
+            int tipo, String imagen) throws Exception;
     
     public ArrayList<InfraestructuraDTO> mostrarInfraestructura() throws Exception;
     
@@ -251,7 +255,7 @@ public interface IControlador {
     public boolean eliminarInfraestructura(int id, String nombre) throws Exception;
     
     public boolean actualizarInfraestructura(int idInfra, String nombre, String ubicacion, 
-            String descripcion, int tipo) throws Exception;
+            String descripcion, int tipo, String imagen) throws Exception;
     
     //TipoExtension
     public boolean registrarTipoExt(String descripcion) throws Exception;
@@ -270,6 +274,8 @@ public interface IControlador {
     
     public ArrayList<ExtensionDTO> mostrarExtensionId(int idExtension) throws Exception;
 
+    public ArrayList<ExtensionDTO> mostrarExtensionTipo(int tipo) throws Exception;
+    
     public boolean actualizarDatosExtension(int idExtension, int tipoext, String descripcion, String nombre,
             String link, String documento) throws Exception;
     
@@ -287,9 +293,31 @@ public interface IControlador {
     public ArrayList<InternacionalizacionDTO> mostrarInter() throws Exception;
     
     public ArrayList<InternacionalizacionDTO> mostrarInterId(int idInternac) throws Exception;
-    
+    public ArrayList<InternacionalizacionDTO> mostrarInternacionalizacionTipo(int tipo) throws Exception;    
     public boolean eliminarInter(int idInternac, String nombre) throws Exception;
     
     public boolean actualizarInter(int idInternac, int tipointer, String descripcion, String nombre, 
             String link, String imagen) throws Exception;
+    
+    //TipoExtension
+    public boolean registrarTipoInfoGrad(String descripcion) throws Exception;
+
+    public ArrayList<TipoInfoGraduadoDTO> mostrarTipoInfoGrad() throws Exception;
+
+    public boolean actualizarDatosTipoInfoGrad(int idtipoinfo, String descripcion) throws Exception;
+    
+    //Graduado
+    public boolean registrarGraduado(int tipoinfog, String descripcion, String nombre, String link, 
+            String documento) throws Exception;
+    
+    public boolean eliminarGraduado(int idGraduado, String nombre) throws Exception;
+
+    public ArrayList<GraduadoDTO> mostrarGraduado() throws Exception;
+    
+    public ArrayList<GraduadoDTO> mostrarGraduadoId(int idGraduado) throws Exception;
+
+    public ArrayList<GraduadoDTO> mostrarGraduadoTipo(int tipo) throws Exception;
+    
+    public boolean actualizarDatosGraduado(int idGraduado, int tipoinfog, String descripcion, String nombre,
+            String link, String documento) throws Exception;
 }

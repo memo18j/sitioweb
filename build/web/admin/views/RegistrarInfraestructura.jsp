@@ -16,7 +16,7 @@
 <div class="panel-body">
     <div class="row">
         <section class="panel panel-default">
-            <form name="forminfr" id="forminfr" action="procesar/procesarInfraestructura.jsp"  method="post" >
+            <form name="forminfr" id="forminfr" action="procesar/procesarInfraestructura.jsp" enctype="multipart/form-data"  method="post" >
                 <header class="panel-heading" style="background-color: #aa1916;">
                     <center><span class="h4" style="color: white;"><b>Registro Informacion de Infraestructura</b></span></center>
                 </header>

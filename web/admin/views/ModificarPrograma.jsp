@@ -42,7 +42,7 @@
                             <div class="col-md-6">
                                 <div class="headline margin-bottom-30"><h4>Tipo Programa</h4></div>
                                 <select class="form-control" id="tipo" name="tipo">
-                                    <option value="<%=c.getTipo()%>" disabled><%=c.getTipo()%></option>           
+                                    <option value="<%=c.getTipo()%>" ><%=c.getTnombre()%></option>           
                                     <%
                                         ArrayList<TipoProgramaDTO> ss = fachada.mostrarTipoPrograma();
                                         for (TipoProgramaDTO m : ss) {

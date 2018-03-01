@@ -60,8 +60,9 @@
             if (key.equals("linea")) descripcion= valor;
         }
     }
-     IControlador fachada = (IControlador) session.getAttribute("fachada");
-    boolean exito = fachada.actualizarInfraestructura(codigo, nombre, ubicacion, descripcion, tipo);
+    IControlador fachada = (IControlador) session.getAttribute("fachada");
+    System.out.println("imageneeenenenene" + url_imagen);
+    boolean exito = fachada.actualizarInfraestructura(codigo, nombre, ubicacion, descripcion, tipo,url_imagen);
     String resp = "";
     if (exito) {
         resp = "S";

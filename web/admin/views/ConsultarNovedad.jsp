@@ -28,6 +28,7 @@
                             <tr>
                                 <th data-field="id">Id</th>                            
                                 <th data-field="nombre">Nombre</th>
+                                 <th data-field="tipo">Tipo</th>
                                 <th data-field="fecha">Fecha</th>
                                 <th data-field="Descrip">Descripcion</th>                      
                                 <th data-field="Edit">Editar</th>
@@ -39,6 +40,7 @@
                             <tr>
                                 <th data-field="id"><%=i.getIdNovedad()%></th>                         
                                 <th data-field="nombre"><%=i.getTitulo()%></th>
+                                <th data-field="tipo"><%=i.getTnombre()%></th>
                                 <th data-field="fecha"><%=i.getFecha()%></th>
                                 <th data-field="Descrip"><%=i.getDescripcion()%></th>  
                                 <th data-field="edit"><a class="btn btn-danger"style="background-color: #aa1916;" 

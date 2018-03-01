@@ -12,19 +12,27 @@ package com.sitioweb.model.DTO;
 public class NovedadDTO {
     
     private int idNovedad;
-    private String titulo, linkimg, descripcion, fecha;
+    private String titulo, linkimg, descripcion, fecha,tnombre;
     private int tiponovedad;
 
     public NovedadDTO() {
     }
 
     public NovedadDTO(String titulo, String linkimg, String descripcion, String fecha,
-            int tiponovedad) {
+           int tiponovedad) {
         this.titulo = titulo;
         this.linkimg = linkimg;
         this.descripcion = descripcion;
         this.fecha = fecha;
         this.tiponovedad = tiponovedad;
+    }
+
+    public String getTnombre() {
+        return tnombre;
+    }
+
+    public void setTnombre(String tnombre) {
+        this.tnombre = tnombre;
     }
 
     public int getIdNovedad() {

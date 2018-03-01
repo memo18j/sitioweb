@@ -41,7 +41,7 @@
                             <tr>
                                 <th data-field="id"><%=i.getIdInvestigacion()%></th>
                                 <th data-field="nombre"><%=i.getNombre()%></th>
-                                <th data-field="Tipo"><%=i.getTipo()%></th>
+                                <th data-field="tipo"><%=i.getTnombre()%></th>
                                 <th data-field="Director"><%=i.getDirector()%></th>
                                 <th data-field="Correo"><%=i.getCorreo()%></th>
                                 <th data-field="Estatus"><%=i.getEstatus()%></th>

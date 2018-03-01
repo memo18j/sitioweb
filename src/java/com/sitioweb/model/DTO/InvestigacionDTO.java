@@ -12,7 +12,7 @@ package com.sitioweb.model.DTO;
 public class InvestigacionDTO {
     
     private int idInvestigacion;
-    private String nombre, director, correo, lineainvest, estatus,link;
+    private String nombre, director, correo, lineainvest, estatus,link,tnombre;
     private int tipo;
 
     public InvestigacionDTO() {
@@ -27,6 +27,14 @@ public class InvestigacionDTO {
         this.estatus = estatus;
         this.link = link;
         this.tipo = tipo;
+    }
+
+    public String getTnombre() {
+        return tnombre;
+    }
+
+    public void setTnombre(String tnombre) {
+        this.tnombre = tnombre;
     }
 
     public int getIdInvestigacion() {

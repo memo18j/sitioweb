@@ -5,6 +5,7 @@
 --%>
 
 
+<%@page import="com.sitioweb.model.DTO.TipoInvestigacionDTO"%>
 <%@page import="com.sitioweb.model.DTO.InvestigacionDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.sitioweb.controller.interfaz.IControlador"%>
@@ -13,6 +14,7 @@
 <jsp:include page="../Plantillas/header.jsp"/>
 <%
         String id = request.getParameter("id");
+        String nombre = request.getParameter("nombre");
         int codigo = Integer.parseInt(id);
 
     %>
@@ -24,7 +26,7 @@
                     <ul class="breadcrumb no-padding margin-bottom-10">
                         <li title="Ingresar a Inicio"><a href="../../index.jsp" style="font-style: italic; font-size: 14px;">Inicio</a></li>
                         <li title="Universidad"><a href="" style="font-style: italic; font-size: 14px;">Facultad</a></li>
-                        <li class="active" title="Departamentos"  style="font-style: italic; font-size: 14px;">Departamentos</li>
+                        <li class="active" title="Investigacion"  style="font-style: italic; font-size: 14px;">Investigacion</li>
                     </ul> 
                 </div>
                 <div class="col-md-4">
@@ -37,7 +39,7 @@
             <div class="row">
                 <div class="col-md-10">
                     <h1 class="pull-left" style="font-size: 36px;">
-                        <b>Departamentos</b></h1>
+                        <b><%=nombre%></b></h1>
                 </div>
                 <div class="col-md-2">
 
@@ -47,13 +49,29 @@
     </div>
     <div class="container content profile">
         <div class="row">
-
+            <div class="col-md-4">
+                <div class="shadow-wrapper">        
+                    <div class="margin-top-20"><h2 style="color:#AA1916;"><b>Menú de Información</b></h2></div>
+                    <ul class="nav nav-pills nav-stacked list-group sidebar-nav-v1" id="sidebar-nav">
+                        <%
+                            IControlador f = (IControlador) session.getAttribute("fachada");
+                            ArrayList<TipoInvestigacionDTO> in = f.mostrarTipoInvestigacion();
+                            for (TipoInvestigacionDTO i : in) {
+                                
+                        %>
+                        <li class="list-group-item" style="border:none; border-bottom: 1px solid #DDDEDF;">
+                            <a href="verInvestigacion.jsp?id=<%=i.getIdTipoInvest()%>&nombre=<%=i.getNombre()%>" 
+                               class="text-menu"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i><%=i.getNombre()%></a></li>                      
+                                <% } %>
+                    </ul>
+                </div>
+            </div><!--/col-md-3-->
             <div class="col-md-8 mb-margin-bottom-30">
                 <br>
                 <br>
                 <div class="margin-bottom-40">
                     <%
-                        IControlador f = (IControlador) session.getAttribute("fachada");
+                        
                         ArrayList<InvestigacionDTO> dp = f.mostrarInvestigacionTipo(codigo);
                     %>
                     <div>
@@ -66,7 +84,7 @@
                                                data-parent=""
                                                href="#<%= p.getIdInvestigacion()%>" aria-expanded="false">
                                                 <span aria-hidden="true"
-                                                      ></span><%=p.getNombre()%></a></b>
+                                                      ></span><i class="fa fa-users"></i><%=p.getNombre()%></a></b>
                                     </h4>
                                 </div>
                                 <div
@@ -74,14 +92,22 @@
                                     class="panel-collapse collapse" aria-expanded="false">
                                     <div class="panel-body">
                                         <div class="row">
-                                            <div class="col-md-12">
-                                                <h6><b>Director:</b><%=p.getDirector()%></h6>
+                                            <div class="col-md-12">                 
+                                                <h5><b>Director: </b><%=p.getDirector()%></h5>
                                                 <h6> </h6>                                             
-                                                <h6><p style="text-align:justify"><%=p.getLineainvest()%></p> </h6>
+                                                <h5><p style="text-align:justify"><%=p.getLineainvest()%></p> </h5>
                                                 <h6> </h6>
+                                                <% if(p.getEstatus() !=null) {%>
+                                                <h5><b>Estatus: </b><%=p.getEstatus()%></h5>
+                                                <h6> </h6> 
+                                                <% } %>
+                                                <% if(p.getCorreo()!=null) {%>
+                                                <h5><b>Correo: </b><%=p.getCorreo()%></h5>
+                                                <h6> </h6> 
+                                                <% } %>
                                                 <% if (p.getLink() != null) {%>
                                                 <a href="<%=p.getLink()%>" target="_blank">Visite nuestro sitio </a></p>
-                                                <% } %>
+                                                <% } %>                       
                                             </div>
                                         </div>
                                     </div>
@@ -92,19 +118,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="shadow-wrapper">        
-                    <div class="margin-top-20"><h2 style="color:#AA1916;"><b>Novedades</b></h2></div>
-                    <ul class="nav nav-pills nav-stacked list-group sidebar-nav-v1" id="sidebar-nav">
-                        <li class="list-group-item" style="border:none; border-bottom: 1px solid #DDDEDF;">
-                            <a href="" class="text-menu"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i> Noticias</a></li>
-                        <li class="list-group-item" style="border:none; border-bottom: 1px solid #DDDEDF;">
-                            <a href="" class="text-menu"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i> Eventos</a></li>
-                        <li class="list-group-item" style="border:none; border-bottom: 1px solid #DDDEDF;">
-                            <a href="" class="text-menu"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i> Actividades</a></li>               
-                    </ul>
-                </div>
-            </div><!--/col-md-3-->
+            
             <hr class="devider devider-dotted">
         </div>
     </div>

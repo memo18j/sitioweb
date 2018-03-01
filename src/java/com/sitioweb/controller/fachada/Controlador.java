@@ -11,6 +11,7 @@ import com.sitioweb.model.DAO.MySQLDocenteDAO;
 import com.sitioweb.model.DAO.MySQLDocumentoDAO;
 import com.sitioweb.model.DAO.MySQLExtensionDAO;
 import com.sitioweb.model.DAO.MySQLFacultadDAO;
+import com.sitioweb.model.DAO.MySQLGraduadoDAO;
 import com.sitioweb.model.DAO.MySQLGrupoDAO;
 import com.sitioweb.model.DAO.MySQLInformacionDAO;
 import com.sitioweb.model.DAO.MySQLInfraestructuraDAO;
@@ -25,6 +26,7 @@ import com.sitioweb.model.DAO.MySQLSemilleroDAO;
 import com.sitioweb.model.DAO.MySQLSesionDAO;
 import com.sitioweb.model.DAO.MySQLTipoExtensionDAO;
 import com.sitioweb.model.DAO.MySQLTipoInfoDAO;
+import com.sitioweb.model.DAO.MySQLTipoInfoGraduadoDAO;
 import com.sitioweb.model.DAO.MySQLTipoInfraestructuraDAO;
 import com.sitioweb.model.DAO.MySQLTipoInternacionalizacionDAO;
 import com.sitioweb.model.DAO.MySQLTipoInvestigacionDAO;
@@ -36,6 +38,7 @@ import com.sitioweb.model.DTO.DocenteDTO;
 import com.sitioweb.model.DTO.DocumentoDTO;
 import com.sitioweb.model.DTO.ExtensionDTO;
 import com.sitioweb.model.DTO.FacultadDTO;
+import com.sitioweb.model.DTO.GraduadoDTO;
 import com.sitioweb.model.DTO.GrupoDTO;
 import com.sitioweb.model.DTO.InformacionDTO;
 import com.sitioweb.model.DTO.InfraestructuraDTO;
@@ -49,6 +52,7 @@ import com.sitioweb.model.DTO.ProyectoInvestDTO;
 import com.sitioweb.model.DTO.SemilleroDTO;
 import com.sitioweb.model.DTO.TipoExtensionDTO;
 import com.sitioweb.model.DTO.TipoInfoDTO;
+import com.sitioweb.model.DTO.TipoInfoGraduadoDTO;
 import com.sitioweb.model.DTO.TipoInfraestructuraDTO;
 import com.sitioweb.model.DTO.TipoInternacionalizacionDTO;
 import com.sitioweb.model.DTO.TipoInvestigacionDTO;
@@ -60,6 +64,7 @@ import com.sitioweb.model.interfaz.IDocente;
 import com.sitioweb.model.interfaz.IDocumento;
 import com.sitioweb.model.interfaz.IExtension;
 import com.sitioweb.model.interfaz.IFacultad;
+import com.sitioweb.model.interfaz.IGraduado;
 import com.sitioweb.model.interfaz.IGrupo;
 import com.sitioweb.model.interfaz.IInformacion;
 import com.sitioweb.model.interfaz.IInfraestructura;
@@ -74,6 +79,7 @@ import com.sitioweb.model.interfaz.ISemillero;
 import com.sitioweb.model.interfaz.ISesion;
 import com.sitioweb.model.interfaz.ITipoExtension;
 import com.sitioweb.model.interfaz.ITipoInfo;
+import com.sitioweb.model.interfaz.ITipoInfoGraduado;
 import com.sitioweb.model.interfaz.ITipoInfraestructura;
 import com.sitioweb.model.interfaz.ITipoInternacionalizacion;
 import com.sitioweb.model.interfaz.ITipoInvestigacion;
@@ -119,6 +125,8 @@ public class Controlador implements IControlador {
     private final ITipoExtension tipoExt;
     private final IInternacionalizacion inter;
     private final ITipoInternacionalizacion tipoInter;
+    private final ITipoInfoGraduado tipoInfoGrad;
+    private final IGraduado graduado;
 
     public Controlador() {
         this.sesion = new MySQLSesionDAO();
@@ -146,6 +154,8 @@ public class Controlador implements IControlador {
         this.tipoExt = new MySQLTipoExtensionDAO();
         this.tipoInter = new MySQLTipoInternacionalizacionDAO();
         this.inter = new MySQLInternacionalizacionDAO();
+        this.tipoInfoGrad = new MySQLTipoInfoGraduadoDAO();
+        this.graduado = new MySQLGraduadoDAO();
     }
 
     @Override
@@ -473,6 +483,11 @@ public class Controlador implements IControlador {
     }
     
     @Override
+    public ArrayList<ProgramaDTO> mostrarProgramaTipo(int tipo) throws Exception {
+        return this.programa.mostrarProgramaTipo(tipo);
+    }
+    
+    @Override
     public boolean eliminarPrograma(int id, String nombre) throws Exception {
         System.out.println("---" + id + "--" + nombre);
         ProgramaDTO dto = new ProgramaDTO();
@@ -679,8 +694,8 @@ public class Controlador implements IControlador {
 
     @Override
     public boolean registrarInfraestructura(String nombre, String ubicacion, String descripcion,
-            int tipo) throws Exception {
-        InfraestructuraDTO infra = new InfraestructuraDTO(nombre, ubicacion, descripcion, tipo);
+            int tipo, String imagen) throws Exception {
+        InfraestructuraDTO infra = new InfraestructuraDTO(nombre, ubicacion, descripcion, tipo, imagen);
         return this.infraestructura.registrarInfraestructura(infra);
     }
     
@@ -710,9 +725,9 @@ public class Controlador implements IControlador {
 
     @Override
     public boolean actualizarInfraestructura(int idInfra, String nombre, String ubicacion,
-            String descripcion, int tipo) throws Exception {
+            String descripcion, int tipo, String imagen) throws Exception {
         return this.infraestructura.actualizarInfraestructura(idInfra, nombre, ubicacion,
-                descripcion, tipo);
+                descripcion, tipo, imagen);
     }
 
     @Override
@@ -757,6 +772,11 @@ public class Controlador implements IControlador {
     public ArrayList<ExtensionDTO> mostrarExtensionId(int idExtension) throws Exception {
         return this.extension.mostrarExtensionId(idExtension);
     }
+    
+    @Override
+    public ArrayList<ExtensionDTO> mostrarExtensionTipo(int tipo) throws Exception {
+        return this.extension.mostrarExtensionTipo(tipo);
+    }
 
     @Override
     public boolean actualizarDatosExtension(int idExtension, int tipoext, String descripcion, 
@@ -797,7 +817,11 @@ public class Controlador implements IControlador {
     public ArrayList<InternacionalizacionDTO> mostrarInterId(int idInternac) throws Exception {
         return this.inter.mostrarInternacionalizacionId(idInternac);
     }
-
+    
+    @Override
+    public ArrayList<InternacionalizacionDTO> mostrarInternacionalizacionTipo(int tipo) throws Exception {
+        return this.inter.mostrarInternacionalizacionTipo(tipo);
+    }
     @Override
     public boolean eliminarInter(int idInternac, String nombre) throws Exception {
         System.out.println("---" + idInternac + "--" + nombre);
@@ -813,5 +837,59 @@ public class Controlador implements IControlador {
             String nombre, String link, String imagen) throws Exception {
         return this.inter.actualizarInternacionalizacion(idInternac, tipointer, descripcion, 
                 nombre, link, imagen);
+    }
+
+    @Override
+    public boolean registrarTipoInfoGrad(String descripcion) throws Exception {
+        TipoInfoGraduadoDTO dto = new TipoInfoGraduadoDTO(descripcion);
+        return this.tipoInfoGrad.registrarTipoInfoGraduado(dto);
+    }
+
+    @Override
+    public ArrayList<TipoInfoGraduadoDTO> mostrarTipoInfoGrad() throws Exception {
+        return this.tipoInfoGrad.mostrarTipoInfoGraduado();
+    }
+
+    @Override
+    public boolean actualizarDatosTipoInfoGrad(int idtipoinfo, String descripcion) throws Exception {
+        return this.tipoInfoGrad.actualizarTipoInfoGraduado(idtipoinfo, descripcion);
+    }
+
+    @Override
+    public boolean registrarGraduado(int tipoinfog, String descripcion, String nombre, String link, 
+            String documento) throws Exception {
+        GraduadoDTO dto = new GraduadoDTO(tipoinfog, descripcion, nombre, link, documento);
+        return this.graduado.registrarGraduado(dto);
+    }
+
+    @Override
+    public boolean eliminarGraduado(int idGraduado, String nombre) throws Exception {
+        System.out.println("---" + idGraduado + "--" + nombre);
+        GraduadoDTO dto = new GraduadoDTO();
+        dto.setIdGraduado(idGraduado);
+        dto.setNombre(nombre);
+
+        return this.graduado.eliminarGraduado(dto);
+    }
+
+    @Override
+    public ArrayList<GraduadoDTO> mostrarGraduado() throws Exception {
+        return this.graduado.mostrarGraduado();
+    }
+
+    @Override
+    public ArrayList<GraduadoDTO> mostrarGraduadoId(int idGraduado) throws Exception {
+        return this.graduado.mostrarGraduadoId(idGraduado);
+    }
+
+    @Override
+    public ArrayList<GraduadoDTO> mostrarGraduadoTipo(int tipo) throws Exception {
+        return this.graduado.mostrarGraduadoTipo(tipo);
+    }
+
+    @Override
+    public boolean actualizarDatosGraduado(int idGraduado, int tipoinfog, String descripcion, 
+            String nombre, String link, String documento) throws Exception {
+        return this.graduado.actualizarGraduado(idGraduado, tipoinfog, descripcion, nombre, link, documento);
     }
 }

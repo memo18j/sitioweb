@@ -20,5 +20,5 @@ public interface IInfraestructura {
     public ArrayList<InfraestructuraDTO> mostrarInfraestructuraTipo(int tipo) throws Exception;
     public boolean eliminarInfraestructura(InfraestructuraDTO dto) throws Exception;
     public boolean actualizarInfraestructura(int idInfra, String nombre, String ubicacion, 
-            String descripcion, int tipo) throws Exception;
+            String descripcion, int tipo, String imagen) throws Exception;
 }

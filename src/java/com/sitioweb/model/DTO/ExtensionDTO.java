@@ -12,7 +12,7 @@ package com.sitioweb.model.DTO;
 public class ExtensionDTO {
     
     private int idExtension;
-    private String descripcion, nombre, link, documento;
+    private String descripcion, nombre, link, documento,tnombre;
     private int tipoext;
 
     public ExtensionDTO() {
@@ -25,6 +25,14 @@ public class ExtensionDTO {
         this.link = link;
         this.documento = documento;
         this.tipoext = tipoext;
+    }
+
+    public String getTnombre() {
+        return tnombre;
+    }
+
+    public void setTnombre(String tnombre) {
+        this.tnombre = tnombre;
     }
 
     public int getIdExtension() {

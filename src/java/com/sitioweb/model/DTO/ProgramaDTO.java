@@ -13,7 +13,7 @@ public class ProgramaDTO {
     
     private int idPrograma;
     private String nombre, director, correoprograma, ubicacion, telefono, modalidad, 
-            horario, imagen, link;
+            horario, imagen, link,tnombre;
     private int tipo, codsnies;
 
     public ProgramaDTO() {
@@ -33,6 +33,14 @@ public class ProgramaDTO {
         this.link = link;
         this.tipo = tipo;
         this.codsnies = codsnies;
+    }
+
+    public String getTnombre() {
+        return tnombre;
+    }
+
+    public void setTnombre(String tnombre) {
+        this.tnombre = tnombre;
     }
 
     public int getIdPrograma() {

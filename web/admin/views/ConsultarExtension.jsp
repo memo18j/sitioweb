@@ -30,6 +30,7 @@
                             <tr>
                                 <th data-field="id">Id</th>       
                                 <th data-field="nombre">Nombre</th>
+                                <th data-field="tipo">Tipo</th>
                                 <th data-field="descripcion">Descripcion</th>                     
                                 <th data-field="Edit">Editar</th>
                                 <th data-field="Remove">Eliminar</th>
@@ -40,6 +41,7 @@
                             <tr>
                                 <th data-field="id"><%=i.getIdExtension()%></th>                         
                                 <th data-field="nombre"><%=i.getNombre()%></th>
+                                <th data-field="tipo"><%=i.getTnombre()%></th>
                                 <th data-field="descripcion"><%=i.getDescripcion()%></th> 
                                 <th data-field="edit"><a class="btn btn-danger"style="background-color: #aa1916;" 
                                 href="ModificarExten.jsp?id=<%=i.getIdExtension()%>"><i class="fa fa-edit"></i></a></th>

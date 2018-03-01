@@ -66,7 +66,9 @@ public class MySQLNovedadDAO implements INovedad{
         ResultSet res = null;
         try {
             conn = Conexion.conectar();
-            stmt = conn.prepareStatement("SELECT * FROM novedad");
+            stmt = conn.prepareStatement("SELECT n.idnovedad, n.titulo, n.linkimg, "
+                    + "n.descripcion, n.fecha,n.tiponovedad, tn.nombre FROM novedad n, tiponovedad tn"
+                    + " WHERE n.tiponovedad=tn.idtiponov");
             res = stmt.executeQuery();
             while (res.next()) {
                 usu = new NovedadDTO();
@@ -76,6 +78,7 @@ public class MySQLNovedadDAO implements INovedad{
                 usu.setDescripcion(res.getString(4));
                 usu.setFecha(res.getString(5));
                 usu.setTiponovedad(res.getInt(6));
+                usu.setTnombre(res.getString(7));
                 list.add(usu);
             }
             stmt.close();
@@ -98,7 +101,9 @@ public class MySQLNovedadDAO implements INovedad{
         ResultSet res = null;
         try {
             conn = Conexion.conectar();
-            stmt = conn.prepareStatement("SELECT * FROM novedad WHERE idNovedad=" + idNovedad);
+            stmt = conn.prepareStatement("SELECT n.idnovedad, n.titulo, n.linkimg, "
+                    + "n.descripcion, n.fecha,n.tiponovedad, tn.nombre FROM novedad n, tiponovedad tn"
+                    + " WHERE n.tiponovedad=tn.idtiponov AND n.idnovedad=" + idNovedad);
             res = stmt.executeQuery();
             while (res.next()) {
                 usu = new NovedadDTO();
@@ -108,6 +113,7 @@ public class MySQLNovedadDAO implements INovedad{
                 usu.setDescripcion(res.getString(4));
                 usu.setFecha(res.getString(5));
                 usu.setTiponovedad(res.getInt(6));
+                usu.setTnombre(res.getString(7));
                 list.add(usu);
             }
             stmt.close();
@@ -130,7 +136,9 @@ public class MySQLNovedadDAO implements INovedad{
         ResultSet res = null;
         try {
             conn = Conexion.conectar();
-            stmt = conn.prepareStatement("SELECT * FROM novedad WHERE tiponovedad=" + tipo);
+            stmt = conn.prepareStatement("SELECT n.idnovedad, n.titulo, n.linkimg, "
+                    + "n.descripcion, n.fecha,n.tiponovedad, tn.nombre FROM novedad n, tiponovedad tn"
+                    + " WHERE n.tiponovedad=tn.idtiponov AND n.tiponovedad=" + tipo);
             res = stmt.executeQuery();
             while (res.next()) {
                 usu = new NovedadDTO();
@@ -140,6 +148,7 @@ public class MySQLNovedadDAO implements INovedad{
                 usu.setDescripcion(res.getString(4));
                 usu.setFecha(res.getString(5));
                 usu.setTiponovedad(res.getInt(6));
+                usu.setTnombre(res.getString(7));
                 list.add(usu);
             }
             stmt.close();
@@ -192,7 +201,7 @@ public class MySQLNovedadDAO implements INovedad{
                 stmt = conn.prepareStatement("UPDATE novedad SET titulo='" + titulo + 
                         "', linkimg='" + linkimg + "', descripcion='" + descripcion +
                         "', fecha='" + fecha + "', tiponovedad=" + 
-                        tiponovedad + " WHERE idNovedad=" + idNovedad);
+                        tiponovedad + " WHERE idnovedad=" + idNovedad);
                 stmt.executeUpdate();
                 exito = true;
             } else {

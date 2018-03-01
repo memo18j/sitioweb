@@ -13,6 +13,8 @@
 <%
     String id = request.getParameter("id");
     int codigo = Integer.parseInt(id);
+    String t = request.getParameter("tipo");
+    int tipo = Integer.parseInt(t);
 
 %>
 <div class="container">
@@ -52,11 +54,13 @@
                     <div class="margin-top-20"><h2 style="color:#AA1916;"><b>Menú de Información</b></h2></div>
                     <ul class="nav nav-pills nav-stacked list-group sidebar-nav-v1" id="sidebar-nav">
                         <%    IControlador fachada = (IControlador) session.getAttribute("fachada");
-                            ArrayList<ProgramaDTO> dc = fachada.mostrarPrograma();
+                            ArrayList<ProgramaDTO> dc = fachada.mostrarProgramaTipo(tipo);
                             for (ProgramaDTO c : dc) {
 
                         %>
-                        <li class="list-group-item" style="border:none; border-bottom: 1px solid #DDDEDF;"><a href="VerPrograma.jsp?id=<%=c.getIdPrograma()%>" class="text-menu"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i><%=c.getNombre()%></a></li>
+                        <li class="list-group-item" style="border:none; border-bottom: 1px solid #DDDEDF;">
+                        <a href="VerPrograma.jsp?id=<%=c.getIdPrograma()%>&tipo=<%=c.getTipo()%>" class="text-menu">
+                        <i class="fa fa-chevron-circle-right" aria-hidden="true"></i><%=c.getNombre()%></a></li>
                                 <% }%>
                     </ul>
 

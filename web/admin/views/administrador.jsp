@@ -9,9 +9,10 @@
     boolean s = (Boolean) session.getAttribute("estadoSesion");
     if (s) {
 %>
-<div class="panel-body">
+<div class="panel-body" >
 <div aling="center">
-    <center><h3>ADMINISTRADOR</h3></center>
+   
+    <img src="../../Views/imagenes/fondo2.jpg" width="1110px" height="585px">
     <!--<center><img  width="1000" height="400" src="../../Views/imagenes/logofaufps.png"/></center>-->
 </div>
 </div>

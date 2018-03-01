@@ -31,12 +31,13 @@ public class MySQLInfraestructuraDAO implements IInfraestructura{
         try {
             conn = Conexion.conectar();
             stmt = conn.prepareStatement("INSERT INTO infraestructura" + "(nombre, ubicacion, "
-                    + "descripcion, tipo) "
-                    + "values (?,?,?,?)");
+                    + "descripcion, tipo,imagen) "
+                    + "values (?,?,?,?,?)");
             stmt.setString(1, dto.getNombre());
             stmt.setString(2, dto.getUbicacion());
             stmt.setString(3, dto.getDescripcion());
             stmt.setInt(4, dto.getTipo());
+            stmt.setString(5, dto.getImagen());
             int total = stmt.executeUpdate();
             if (total > 0) {
                 exito = true;
@@ -66,7 +67,9 @@ public class MySQLInfraestructuraDAO implements IInfraestructura{
         ResultSet res = null;
         try {
             conn = Conexion.conectar();
-            stmt = conn.prepareStatement("SELECT * FROM infraestructura");
+            stmt = conn.prepareStatement("SELECT i.idinfra, i.nombre, i.ubicacion, i.descripcion,"
+                    + "i.tipo, ti.nombre, i.imagen FROM infraestructura i, tipoinfraestructura ti "
+                    + "WHERE i.tipo=ti.idtipoinfra");
             res = stmt.executeQuery();
             while (res.next()) {
                 usu = new InfraestructuraDTO();
@@ -75,6 +78,8 @@ public class MySQLInfraestructuraDAO implements IInfraestructura{
                 usu.setUbicacion(res.getString(3));
                 usu.setDescripcion(res.getString(4));
                 usu.setTipo(res.getInt(5));
+                usu.setTnombre(res.getString(6));
+                usu.setImagen(res.getString(7));
                 list.add(usu);
             }
             stmt.close();
@@ -97,7 +102,9 @@ public class MySQLInfraestructuraDAO implements IInfraestructura{
         ResultSet res = null;
         try {
             conn = Conexion.conectar();
-            stmt = conn.prepareStatement("SELECT * FROM infraestructura WHERE idinfra=" + idInfra);
+            stmt = conn.prepareStatement("SELECT i.idinfra, i.nombre, i.ubicacion, i.descripcion,"
+                    + "i.tipo,ti.nombre, i.imagen FROM infraestructura i, tipoinfraestructura ti "
+                    + "WHERE i.tipo=ti.idtipoinfra AND idinfra=" + idInfra);
             res = stmt.executeQuery();
             while (res.next()) {
                 usu = new InfraestructuraDTO();
@@ -106,6 +113,8 @@ public class MySQLInfraestructuraDAO implements IInfraestructura{
                 usu.setUbicacion(res.getString(3));
                 usu.setDescripcion(res.getString(4));
                 usu.setTipo(res.getInt(5));
+                usu.setTnombre(res.getString(6));
+                usu.setImagen(res.getString(7));
                 list.add(usu);
             }
             stmt.close();
@@ -128,7 +137,9 @@ public class MySQLInfraestructuraDAO implements IInfraestructura{
         ResultSet res = null;
         try {
             conn = Conexion.conectar();
-            stmt = conn.prepareStatement("SELECT * FROM infraestructura WHERE tipo=" + tipo);
+            stmt = conn.prepareStatement("SELECT i.idinfra, i.nombre, i.ubicacion, i.descripcion,"
+                    + "i.tipo,ti.nombre, i.imagen FROM infraestructura i, tipoinfraestructura ti "
+                    + "WHERE i.tipo=ti.idtipoinfra AND tipo=" + tipo);
             res = stmt.executeQuery();
             while (res.next()) {
                 usu = new InfraestructuraDTO();
@@ -137,6 +148,8 @@ public class MySQLInfraestructuraDAO implements IInfraestructura{
                 usu.setUbicacion(res.getString(3));
                 usu.setDescripcion(res.getString(4));
                 usu.setTipo(res.getInt(5));
+                usu.setTnombre(res.getString(6));
+                usu.setImagen(res.getString(7));
                 list.add(usu);
             }
             stmt.close();
@@ -178,16 +191,16 @@ public class MySQLInfraestructuraDAO implements IInfraestructura{
 
     @Override
     public boolean actualizarInfraestructura(int idInfra, String nombre, String ubicacion, 
-            String descripcion, int tipo) throws Exception {
+            String descripcion, int tipo, String imagen) throws Exception {
         PreparedStatement stmt = null;
         boolean exito = false;
         try {
             conn = Conexion.conectar();
             if (idInfra!=0 & !nombre.equalsIgnoreCase("") & !ubicacion.equalsIgnoreCase("")
                     & !descripcion.equalsIgnoreCase("") & tipo!=0) {
-                stmt = conn.prepareStatement("UPDATE grupoinvestigacion SET nombre='" + nombre + 
+                stmt = conn.prepareStatement("UPDATE infraestructura SET nombre='" + nombre + 
                         "', ubicacion='" + ubicacion + "', descripcion='" + descripcion 
-                        + "', tipo=" + tipo + " WHERE idInfra=" + idInfra);
+                        + "', tipo=" + tipo + ", imagen='" + imagen + "' WHERE idInfra=" + idInfra);
                 stmt.executeUpdate();
                 exito = true;
             } else {

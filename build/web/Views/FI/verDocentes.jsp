@@ -42,6 +42,18 @@
     </div>
     <div class="container content profile">
         <div class="row">
+            <div class="col-md-4">
+                <div class="shadow-wrapper">        
+                    <div class="margin-top-20"><h2 style="color:#AA1916;"><b>Menu de Informacion</b></h2></div>
+                    <ul class="nav nav-pills nav-stacked list-group sidebar-nav-v1" id="sidebar-nav">
+                        <li class="list-group-item" style="border:none; border-bottom: 1px solid #DDDEDF;">
+                            <a href="VerDepartamento.jsp" class="text-menu"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i>Departamentos</a></li>
+                        <li class="list-group-item" style="border:none; border-bottom: 1px solid #DDDEDF;">
+                            <a href="verDocentes.jsp" class="text-menu"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i>Docentes</a></li>
+                        
+                    </ul>
+                </div>
+            </div><!--/col-md-3-->  
             <div class="col-md-8 mb-margin-bottom-30">
                 <br>
                 <br>
@@ -63,7 +75,7 @@
                                                data-parent="#accordion-2"
                                                href="#<%= p.getIdDocente()%>">
                                                 <span aria-hidden="true"
-                                                      class="icon-users"></span><%=p.getNombre()%></a></b>
+                                                      ></span><i class="fa fa-user"></i><%=p.getNombre()%></a></b>
                                     </h4>
                                 </div>
                                 <div
@@ -92,19 +104,7 @@
                    
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="shadow-wrapper">        
-                    <div class="margin-top-20"><h2 style="color:#AA1916;"><b>Novedades</b></h2></div>
-                    <ul class="nav nav-pills nav-stacked list-group sidebar-nav-v1" id="sidebar-nav">
-                        <li class="list-group-item" style="border:none; border-bottom: 1px solid #DDDEDF;">
-                            <a href="" class="text-menu"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i> Noticias</a></li>
-                        <li class="list-group-item" style="border:none; border-bottom: 1px solid #DDDEDF;">
-                            <a href="" class="text-menu"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i> Eventos</a></li>
-                        <li class="list-group-item" style="border:none; border-bottom: 1px solid #DDDEDF;">
-                            <a href="" class="text-menu"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i> Actividades</a></li>               
-                    </ul>
-                </div>
-            </div><!--/col-md-3-->        
+                  
             <hr class="devider devider-dotted">
         </div>
     </div>

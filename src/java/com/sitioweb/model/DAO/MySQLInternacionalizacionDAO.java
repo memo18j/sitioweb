@@ -67,16 +67,19 @@ public class MySQLInternacionalizacionDAO implements IInternacionalizacion{
         ResultSet res = null;
         try {
             conn = Conexion.conectar();
-            stmt = conn.prepareStatement("SELECT * FROM internacionalizacion");
+            stmt = conn.prepareStatement("SELECT i.idinternac,i.tipointer, ti.descripcion, i.descripcion,"
+                    + " i.nombre, i.link, i.imagen FROM internacionalizacion i, tipointernacionalizacion ti"
+                    + " WHERE i.tipointer=ti.idtipointernac");
             res = stmt.executeQuery();
             while (res.next()) {
                 usu = new InternacionalizacionDTO();
                 usu.setIdInternac(res.getInt(1));
                 usu.setTipointer(res.getInt(2));
-                usu.setDescripcion(res.getString(3));
-                usu.setNombre(res.getString(4));
-                usu.setLink(res.getString(5));
-                usu.setImagen(res.getString(6));
+                usu.setTnombre(res.getString(3));
+                usu.setDescripcion(res.getString(4));
+                usu.setNombre(res.getString(5));
+                usu.setLink(res.getString(6));
+                usu.setImagen(res.getString(7));
                 list.add(usu);
             }
             stmt.close();
@@ -99,16 +102,19 @@ public class MySQLInternacionalizacionDAO implements IInternacionalizacion{
         ResultSet res = null;
         try {
             conn = Conexion.conectar();
-            stmt = conn.prepareStatement("SELECT * FROM internacionalizacion WHERE idinternac=" + idInternac);
+            stmt = conn.prepareStatement("SELECT i.idinternac,i.tipointer, ti.descripcion, i.descripcion,"
+                    + " i.nombre, i.link, i.imagen FROM internacionalizacion i, tipointernacionalizacion ti"
+                    + " WHERE i.tipointer=ti.idtipointernac AND idinternac=" + idInternac);
             res = stmt.executeQuery();
             while (res.next()) {
-                usu = new InternacionalizacionDTO();
+                usu = new InternacionalizacionDTO();           
                 usu.setIdInternac(res.getInt(1));
                 usu.setTipointer(res.getInt(2));
-                usu.setDescripcion(res.getString(3));
-                usu.setNombre(res.getString(4));
-                usu.setLink(res.getString(5));
-                usu.setImagen(res.getString(6));
+                usu.setTnombre(res.getString(3));
+                usu.setDescripcion(res.getString(4));
+                usu.setNombre(res.getString(5));
+                usu.setLink(res.getString(6));
+                usu.setImagen(res.getString(7));
                 list.add(usu);
             }
             stmt.close();
@@ -147,6 +153,42 @@ public class MySQLInternacionalizacionDAO implements IInternacionalizacion{
         }
         return exito;
     }
+    
+     @Override
+    public ArrayList<InternacionalizacionDTO> mostrarInternacionalizacionTipo(int tipo) throws Exception {
+        ArrayList<InternacionalizacionDTO> list = new ArrayList();
+        PreparedStatement stmt = null;
+         InternacionalizacionDTO usu = null;
+        ResultSet res = null;
+        try {
+            conn = Conexion.conectar();
+            stmt = conn.prepareStatement("SELECT i.idinternac,i.tipointer, ti.descripcion, i.descripcion,"
+                    + " i.nombre, i.link, i.imagen FROM internacionalizacion i, tipointernacionalizacion ti"
+                    + " WHERE i.tipointer=ti.idtipointernac AND tipointer=" 
+                    + tipo);
+            res = stmt.executeQuery();
+            while (res.next()) {
+                usu = new InternacionalizacionDTO();
+                usu.setIdInternac(res.getInt(1));
+                usu.setTipointer(res.getInt(2));
+                usu.setTnombre(res.getString(3));
+                usu.setDescripcion(res.getString(4));
+                usu.setNombre(res.getString(5));
+                usu.setLink(res.getString(6));
+                usu.setImagen(res.getString(7));
+                list.add(usu);
+            }
+            stmt.close();
+            res.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return list;
+    }
 
     @Override
     public boolean actualizarInternacionalizacion(int idInternac, int tipointer, String descripcion, 
@@ -156,8 +198,8 @@ public class MySQLInternacionalizacionDAO implements IInternacionalizacion{
         try {
             conn = Conexion.conectar();
             if (idInternac!=0 & !nombre.equalsIgnoreCase("") & !link.equalsIgnoreCase("")
-                    & !descripcion.equalsIgnoreCase("") & tipointer!=0 & !imagen.equalsIgnoreCase("")) {
-                stmt = conn.prepareStatement("UPDATE grupoinvestigacion SET tipointer=" + tipointer + 
+                    & !descripcion.equalsIgnoreCase("") & tipointer!=0) {
+                stmt = conn.prepareStatement("UPDATE internacionalizacion SET tipointer=" + tipointer + 
                         ", descripcion='" + descripcion + "', nombre='" + nombre + "', link='" + 
                         link + "', imagen='" + imagen + "' WHERE idinternac=" + idInternac);
                 stmt.executeUpdate();

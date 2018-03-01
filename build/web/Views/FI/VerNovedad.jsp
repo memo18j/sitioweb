@@ -14,6 +14,7 @@
     <%
         String id = request.getParameter("id");
         int codigo = Integer.parseInt(id);
+        String nombre = request.getParameter("nombre");
 
     %>
     <div class="container">
@@ -37,7 +38,7 @@
                 <div class="row">
                     <div class="col-md-10">
                         <h1 class="pull-left" style="font-size: 36px;">
-                            <b>Novedades</b></h1>
+                            <b><%=nombre%></b></h1>
                     </div>
                     <div class="col-md-2">
 
@@ -45,33 +46,37 @@
                 </div>
             </div>
             <div>
-                <%                
+                <%
                     IControlador fachada = (IControlador) session.getAttribute("fachada");
                     ArrayList<NovedadDTO> dp = fachada.mostrarNovedadId(codigo);
+                    int x = 0;
                 %>
                 <div class="col-md-2"></div>
                 <div class="col-md-8 mb-margin-bottom-30">
-                    <% for(NovedadDTO e :dp) { %>
+                    <% for (NovedadDTO e : dp) {%>
                     <h4><label><%=e.getTitulo()%></label></h4>
-                    <div aling="center"class="img-intro-right">
-                        <figure>
-                           <img id="zoom_01" width="500" max-width="400" height="600"  
-                             src="<%= e.getLinkimg()%>"/> 
-                        </figure>
-                        
+                    <div align="center">
+                        <img id="<%= e.getTitulo()%>" src="<%=e.getLinkimg()%>" width="700" height="300" 
+                             onclick="clickimagen('<%=x%>', '<%=e.getLinkimg()%>')"/>
+                        <div id="myModal<%=x%>" class="modal">
+                            <span class="close">&times;</span>
+                            <img class="modal-content" id="img<%=x%>">
+                            <div id="caption"></div>
+                        </div>    
                     </div>
                     <br>
-                             <strong>Fecha: </strong><%=e.getFecha()%> 
-                             <br>
-                             <h4><p aling="justify"><%=e.getDescripcion()%></p></h4>
-                             <br>
-                    <% } %>
+                    <strong>Fecha: </strong><%=e.getFecha()%> 
+                    <br>
+                    <h4><p aling="justify"><%=e.getDescripcion()%></p></h4>
+                    <br>
+                    <% }%>
                 </div>
                 <div class="col-md-2"></div>
             </div>
         </div>
     </div><!--/col-md-3-->
 </main>
+<script type="text/javascript" src="public/js/memo.js"></script>
 <jsp:include page="../Plantillas/footer.jsp"/>
 
 

@@ -28,6 +28,7 @@
                             <tr>
                                 <th data-field="id">Id</th>       
                                 <th data-field="nombre">Nombre</th>
+                                <th data-field="tipo">Tipo</th>
                                 <th data-field="ubicacion">Ubicacion</th>                     
                                 <th data-field="Edit">Editar</th>
                                 <th data-field="Remove">Eliminar</th>
@@ -38,8 +39,8 @@
                             <tr>
                                 <th data-field="id"><%=i.getIdInfra()%></th>                         
                                 <th data-field="nombre"><%=i.getNombre()%></th>
-                                <th data-field="ubicacion"><%=i.getUbicacion()%></th>
-                                <th data-field="Descrip"><%=i.getDescripcion()%></th>  
+                                <th data-field="tipo"><%=i.getTnombre()%></th>                          
+                                <th data-field="ubicacion"><%=i.getUbicacion()%></th> 
                                 <th data-field="edit"><a class="btn btn-danger"style="background-color: #aa1916;" 
                                 href="ModificarInfraestructura.jsp?id=<%=i.getIdInfra()%>"><i class="fa fa-edit"></i></a></th>
                                 <th data-field="remove"><a class="btn btn-danger"style="background-color: #aa1916;"

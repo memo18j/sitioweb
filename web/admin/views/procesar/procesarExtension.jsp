@@ -51,7 +51,7 @@
             out.println(key);
             String valor = uploaded.getString();
             out.println(valor);
-     
+            if (key.equals("id")) codigo = Integer.parseInt(valor);
             if (key.equals("nom")) nombre = valor;
             if (key.equals("tipo")) tipo = Integer.parseInt(valor);
             if (key.equals("url_web")){ 
@@ -65,10 +65,8 @@
             if (key.equals("linea")) descripcion= valor;
         }
     }
-     IControlador fachada = (IControlador) session.getAttribute("fachada");
-
-    boolean exito = fachada.registrarExtension(tipo, descripcion, nombre, url, url_imagen);
-
+     IControlador fachada = (IControlador) session.getAttribute("fachada"); 
+    boolean exito = fachada.actualizarDatosExtension(codigo, tipo, descripcion, nombre, url, url_imagen);
     String resp = "";
     if (exito) {
         resp = "S";

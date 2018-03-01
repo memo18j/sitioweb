@@ -42,7 +42,7 @@
                             <div class="col-md-6">
                                 <div class="headline margin-bottom-30"><h4>Tipo Investigacion</h4></div>
                                 <select class="form-control" id="tipo" name="tipo">
-                                    <option value="" disabled selected>Elige una opcion</option>           
+                                    <option value="<%=i.getTipo()%>"><%=i.getTnombre()%></option>             
 
                                     <%
                                        

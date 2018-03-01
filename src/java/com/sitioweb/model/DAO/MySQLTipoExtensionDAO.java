@@ -99,8 +99,8 @@ public class MySQLTipoExtensionDAO implements ITipoExtension{
         try {
             conn = Conexion.conectar();
             if (idtipo!=0 & !descripcion.equalsIgnoreCase("")) {
-                stmt = conn.prepareStatement("UPDATE tipoinfo SET descripcion='" + 
-                        descripcion + " WHERE idtipo=" + idtipo);
+                stmt = conn.prepareStatement("UPDATE tipoextension SET descripcion='" + 
+                        descripcion + "' WHERE idtipo=" + idtipo);
                 stmt.executeUpdate();
                 exito = true;
             } else {

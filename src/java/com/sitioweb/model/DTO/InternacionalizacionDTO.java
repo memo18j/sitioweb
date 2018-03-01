@@ -12,7 +12,7 @@ package com.sitioweb.model.DTO;
 public class InternacionalizacionDTO {
     
     private int idInternac, tipointer;
-    private String descripcion, nombre, link, imagen;
+    private String descripcion, nombre, link, imagen,tnombre;
 
     public InternacionalizacionDTO() {
     }
@@ -24,6 +24,14 @@ public class InternacionalizacionDTO {
         this.nombre = nombre;
         this.link = link;
         this.imagen = imagen;
+    }
+
+    public String getTnombre() {
+        return tnombre;
+    }
+
+    public void setTnombre(String tnombre) {
+        this.tnombre = tnombre;
     }
 
     public int getIdInternac() {

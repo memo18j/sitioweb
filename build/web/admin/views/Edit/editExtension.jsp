@@ -67,12 +67,12 @@
     }
      IControlador fachada = (IControlador) session.getAttribute("fachada");
 
-    boolean exito = fachada.registrarExtension(tipo, descripcion, nombre, url, url_imagen);
-
+    
+    boolean exito = fachada.actualizarDatosExtension(codigo, tipo, descripcion, nombre, url, url_imagen);
     String resp = "";
     if (exito) {
         resp = "S";
-        response.sendRedirect("../RegistrarExtension.jsp");
+        response.sendRedirect("../ConsultarExtension.jsp");
     } else {
         resp = "N";
     }

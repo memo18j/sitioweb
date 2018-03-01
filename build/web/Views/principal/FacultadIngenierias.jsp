@@ -23,7 +23,7 @@
                     for (NovedadDTO es : dp) {
                 %>
                 <li>
-                    <a href="../FI/VerNovedad.jsp?id=<%=es.getIdNovedad()%>"><img
+                    <a href="../FI/VerNovedad.jsp?id=<%=es.getIdNovedad()%>&nombre=<%=es.getTnombre()%>"><img
                             src="<%=es.getLinkimg()%>"
                             alt="<%=es.getDescripcion()%>"><span
                             style="font-family: inherit; font-weight: bold;"><%=es.getDescripcion()%></span></a>
@@ -32,9 +32,7 @@
             </ul>
         </div>
     </div>   
-    
     <!-- EVENTOS ---------------------->
-    
     <div style="background-color: #e8e8e8; ">
         <div class="container content-prin profile">
             <div class="row margin-top-10">
@@ -44,30 +42,15 @@
                 </div>
                 <div class="col-md-12">
                     <div class="row equal-height-columns margin-bottom-10">
-
                         <div class="container">
                             <div class="owl-carousel-v1 owl-work-v1 margin-bottom-40">
                                 <div class="owl-recent-works-v1">
-                                    <!--                                <div class="item">-->
-                                    <!--                                    <a href="#">-->
-                                    <!--                                        <em class="overflow-hidden">-->
-                                    <!--                                            <img class="img-responsive" src="assets/img/main/img1.jpg" alt="">-->
-                                    <!--                                        </em>-->
-                                    <!--                        <span>-->
-                                    <!--                            <strong>Happy New Year</strong>-->
-                                    <!--                            <i>Anim pariatur cliche reprehenderit</i>-->
-                                    <!--                        </span>-->
-                                    <!--                                    </a>-->
-                                    <!--                                </div>-->
-
                                     <%
-
                                         ArrayList<NovedadDTO> dn = fachada.mostrarNovedadTipo(2);
                                         for (NovedadDTO n : dn) {
                                     %>
-
                                     <div class="item">
-                                        <a href="../FI/VerNovedad.jsp?id=<%=n.getIdNovedad()%>"  style="text-align: center;">
+                                        <a href="../FI/VerNovedad.jsp?id=<%=n.getIdNovedad()%>&nombre=<%=n.getTnombre()%>"  style="text-align: center;">
                                             <div class="easy-block-v1-badge rgba-red" style="color:black; padding: 5px;">
                                                 <%=n.getFecha()%></div>
                                             <em class="overflow-hidden">

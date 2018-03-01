@@ -1,3 +1,6 @@
+<%@page import="com.sitioweb.model.DTO.TipoInfoGraduadoDTO"%>
+<%@page import="com.sitioweb.model.DTO.TipoInternacionalizacionDTO"%>
+<%@page import="com.sitioweb.model.DTO.TipoExtensionDTO"%>
 <%@page import="com.sitioweb.model.DTO.TipoInfraestructuraDTO"%>
 <%@page import="com.sitioweb.model.DTO.TipoInvestigacionDTO"%>
 <%@page import="com.sitioweb.model.DTO.InformacionDTO"%>
@@ -31,7 +34,26 @@
 
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"> 
 
-        <link type="text/css" rel="stylesheet" href="https://ww2.ufps.edu.co/assets/plugins/bootstrap/css/bootstrap.min.css"><link type="text/css" rel="stylesheet" href="https://ww2.ufps.edu.co/assets/css/ie8.min.css"><link type="text/css" rel="stylesheet" href="https://ww2.ufps.edu.co/assets/css/blocks.min.css"><link type="text/css" rel="stylesheet" href="https://ww2.ufps.edu.co/assets/css/plugins.min.css"><link type="text/css" rel="stylesheet" href="https://ww2.ufps.edu.co/assets/css/style.min.css"><link type="text/css" rel="stylesheet" href="https://ww2.ufps.edu.co/assets/css/app.min.css"><link type="text/css" rel="stylesheet" href="https://ww2.ufps.edu.co/assets/css/shop.plugins.min.css"><link type="text/css" rel="stylesheet" href="https://ww2.ufps.edu.co/assets/css/shop.blocks.min.css"><link type="text/css" rel="stylesheet" href="https://ww2.ufps.edu.co/assets/plugins/style-switcher/style-switcher.min.css"><link type="text/css" rel="stylesheet" href="https://ww2.ufps.edu.co/assets/css/shop.style.min.css"><link type="text/css" rel="stylesheet" href="https://ww2.ufps.edu.co/assets/css/headers/header-v6.min.css"><link type="text/css" rel="stylesheet" href="https://ww2.ufps.edu.co/assets/css/headers/header-v8.min.css"><link type="text/css" rel="stylesheet" href="https://ww2.ufps.edu.co/assets/css/footers/footer-v1.min.css"><link type="text/css" rel="stylesheet" href="https://ww2.ufps.edu.co/assets/plugins/animate.min.css"><link type="text/css" rel="stylesheet" href="https://ww2.ufps.edu.co/assets/plugins/line-icons/line-icons.min.css"><link type="text/css" rel="stylesheet" href="https://ww2.ufps.edu.co/assets/plugins/owl-carousel/owl-carousel/owl.carousel.min.css"><link type="text/css" rel="stylesheet" href="https://ww2.ufps.edu.co/assets/plugins/horizontal-parallax/css/horizontal-parallax.min.css"><link type="text/css" rel="stylesheet" href="https://ww2.ufps.edu.co/assets/plugins/layer-slider/layerslider/css/layerslider.min.css"><link type="text/css" rel="stylesheet" href="https://ww2.ufps.edu.co/assets/css/theme-colors/ured.min.css"><link type="text/css" rel="stylesheet" href="https://ww2.ufps.edu.co/assets/plugins/scrollbar/css/jquery.mCustomScrollbar.min.css"><link type="text/css" rel="stylesheet" href="https://ww2.ufps.edu.co/assets/plugins/sky-forms-pro/skyforms/css/sky-forms.min.css"><link type="text/css" rel="stylesheet" href="https://ww2.ufps.edu.co/assets/plugins/sky-forms-pro/skyforms/custom/custom-sky-forms.min.css"><link type="text/css" rel="stylesheet" href="https://ww2.ufps.edu.co/assets/css/pages/profile.min.css"><link type="text/css" rel="stylesheet" href="https://ww2.ufps.edu.co/assets/plugins/brand-buttons/brand-buttons.min.css"><link type="text/css" rel="stylesheet" href="https://ww2.ufps.edu.co/assets/plugins/brand-buttons/brand-buttons-inversed.min.css"><link type="text/css" rel="stylesheet" href="https://ww2.ufps.edu.co/assets/plugins/hover-effects/css/hover.min.css"><link type="text/css" rel="stylesheet" href="https://ww2.ufps.edu.co/assets/plugins/hover-effects/css/custom-hover-effects.min.css"><link type="text/css" rel="stylesheet" href="https://ww2.ufps.edu.co/assets/css/custom.min.css"><link type="text/css" rel="stylesheet" href="https://ww2.ufps.edu.co/assets/css/pgwslider/pgwslider.min.css">
+        <link type="text/css" rel="stylesheet" href="https://ww2.ufps.edu.co/assets/plugins/bootstrap/css/bootstrap.min.css">
+        <link type="text/css" rel="stylesheet" href="https://ww2.ufps.edu.co/assets/css/ie8.min.css">
+        <link type="text/css" rel="stylesheet" href="https://ww2.ufps.edu.co/assets/css/blocks.min.css">
+        <link type="text/css" rel="stylesheet" href="https://ww2.ufps.edu.co/assets/css/plugins.min.css">
+        <link type="text/css" rel="stylesheet" href="https://ww2.ufps.edu.co/assets/css/style.min.css">
+        <link type="text/css" rel="stylesheet" href="https://ww2.ufps.edu.co/assets/css/app.min.css">
+        <link type="text/css" rel="stylesheet" href="https://ww2.ufps.edu.co/assets/css/shop.plugins.min.css">
+        <link type="text/css" rel="stylesheet" href="https://ww2.ufps.edu.co/assets/css/shop.blocks.min.css">
+        <link type="text/css" rel="stylesheet" href="https://ww2.ufps.edu.co/assets/plugins/style-switcher/style-switcher.min.css">
+        <link type="text/css" rel="stylesheet" href="https://ww2.ufps.edu.co/assets/css/shop.style.min.css">
+        <link type="text/css" rel="stylesheet" href="https://ww2.ufps.edu.co/assets/css/headers/header-v6.min.css">
+        <link type="text/css" rel="stylesheet" href="https://ww2.ufps.edu.co/assets/css/headers/header-v8.min.css">
+        <link type="text/css" rel="stylesheet" href="https://ww2.ufps.edu.co/assets/css/footers/footer-v1.min.css">
+        <link type="text/css" rel="stylesheet" href="https://ww2.ufps.edu.co/assets/plugins/animate.min.css">
+        <link type="text/css" rel="stylesheet" href="https://ww2.ufps.edu.co/assets/plugins/line-icons/line-icons.min.css">
+        <link type="text/css" rel="stylesheet" href="https://ww2.ufps.edu.co/assets/plugins/owl-carousel/owl-carousel/owl.carousel.min.css">
+        <link type="text/css" rel="stylesheet" href="https://ww2.ufps.edu.co/assets/plugins/horizontal-parallax/css/horizontal-parallax.min.css">
+        <link type="text/css" rel="stylesheet" href="https://ww2.ufps.edu.co/assets/plugins/layer-slider/layerslider/css/layerslider.min.css">
+        <link type="text/css" rel="stylesheet" href="https://ww2.ufps.edu.co/assets/css/theme-colors/ured.min.css">
+        <link type="text/css" rel="stylesheet" href="https://ww2.ufps.edu.co/assets/plugins/scrollbar/css/jquery.mCustomScrollbar.min.css"><link type="text/css" rel="stylesheet" href="https://ww2.ufps.edu.co/assets/plugins/sky-forms-pro/skyforms/css/sky-forms.min.css"><link type="text/css" rel="stylesheet" href="https://ww2.ufps.edu.co/assets/plugins/sky-forms-pro/skyforms/custom/custom-sky-forms.min.css"><link type="text/css" rel="stylesheet" href="https://ww2.ufps.edu.co/assets/css/pages/profile.min.css"><link type="text/css" rel="stylesheet" href="https://ww2.ufps.edu.co/assets/plugins/brand-buttons/brand-buttons.min.css"><link type="text/css" rel="stylesheet" href="https://ww2.ufps.edu.co/assets/plugins/brand-buttons/brand-buttons-inversed.min.css"><link type="text/css" rel="stylesheet" href="https://ww2.ufps.edu.co/assets/plugins/hover-effects/css/hover.min.css"><link type="text/css" rel="stylesheet" href="https://ww2.ufps.edu.co/assets/plugins/hover-effects/css/custom-hover-effects.min.css"><link type="text/css" rel="stylesheet" href="https://ww2.ufps.edu.co/assets/css/custom.min.css"><link type="text/css" rel="stylesheet" href="https://ww2.ufps.edu.co/assets/css/pgwslider/pgwslider.min.css">
     </head>
 
     <body class="header-fixed boxed-layout">
@@ -168,10 +190,10 @@
                                         <a href="javascript:void(0);">Pregrado</a>
                                         <ul class="dropdown-menu">
                                             <%
-                                                ArrayList<ProgramaDTO> ss = f.mostrarPrograma();
+                                                ArrayList<ProgramaDTO> ss = f.mostrarProgramaTipo(1);
                                                 for (ProgramaDTO m : ss) {
                                             %>
-                                            <li><a href="../FI/VerPrograma.jsp?id=<%=m.getIdPrograma()%>">
+                                            <li><a href="../FI/VerPrograma.jsp?id=<%=m.getIdPrograma()%>&tipo=<%=m.getTipo()%>">
                                                     <i class="fa fa-angle-double-right" aria-hidden="true"></i><%=m.getNombre()%> </a></li>
                                                     <% } %>  
                                         </ul>
@@ -179,18 +201,25 @@
                                     <li class="dropdown-submenu">
                                         <a href="javascript:void(0);">Tecnológicos</a>
                                         <ul class="dropdown-menu">                                          
-                                            <li><a href="../programa/tecnoceramicos.jsp"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Tecnología en Gestión y Desarrollo de Productos Cerámicos</a></li>
-                                            <li><a href="../programa/tecnomanofactura.jsp"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Tecnología en Gestión de Procesos de Manufactura</a></li>
-                                            <li><a href="../programa/tecnoobras.jsp"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Tecnología en Obras Civiles</a></li>
-                                            <li><a href="../programa/tecnoprocesos.jsp"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Tecnología en Procesos Industriales</a></li>
+                                            <%
+                                                ArrayList<ProgramaDTO> s1 = f.mostrarProgramaTipo(2);
+                                                for (ProgramaDTO m : s1) {
+                                            %>
+                                            <li><a href="../FI/VerPrograma.jsp?id=<%=m.getIdPrograma()%>&tipo=<%=m.getTipo()%>">
+                                                    <i class="fa fa-angle-double-right" aria-hidden="true"></i><%=m.getNombre()%> </a></li>
+                                                    <% } %>  
                                         </ul>
                                     </li>
                                     <li class="dropdown-submenu">
                                         <a href="javascript:void(0);">Técnicos</a>
                                         <ul class="dropdown-menu">
-                                            <li><a href="../programa/tecceramicos.jsp"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Técnico Profesional en Fabricación Industrial de Productos Cerámicos</a></li>
-                                            <li><a href="../programa/tecartesanal.jsp"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Técnico Profesional en Producción de Cerámica Artesanal</a></li>
-                                            <li><a href="../programa/teccalzado.jsp"><i class="fa fa-angle-double-right" aria-hidden="true"></i>Técnico Profesional en Procesos de Manufactura de Calzado y Marroquinería</a></li>
+                                            <%
+                                                ArrayList<ProgramaDTO> s2 = f.mostrarProgramaTipo(3);
+                                                for (ProgramaDTO m : s2) {
+                                            %>
+                                            <li><a href="../FI/VerPrograma.jsp?id=<%=m.getIdPrograma()%>&tipo=<%=m.getTipo()%>">
+                                                    <i class="fa fa-angle-double-right" aria-hidden="true"></i><%=m.getNombre()%> </a></li>
+                                                    <% } %>  
                                         </ul>
                                     </li>
 
@@ -200,20 +229,37 @@
                                             <li class="dropdown-submenu">
                                                 <a href="javascript:void(0);"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Especializaciones</a>
                                                 <ul class="dropdown-menu">                                                   
-                                                    <li><a href="https://ww2.ufps.edu.co/oferta-academica/especializacion-en-desarrollo-del-software">En Desarrollo del Software</a></li>                                         
-                                                    <li><a href="https://ww2.ufps.edu.co/oferta-academica/especializacion-en-informatica-educativa">En Informática Educativa</a></li>                                                    
+                                                    <%
+                                                        ArrayList<ProgramaDTO> s3 = f.mostrarProgramaTipo(4);
+                                                        for (ProgramaDTO m : s3) {
+                                                    %>
+                                                    <li><a href="../FI/VerPrograma.jsp?id=<%=m.getIdPrograma()%>&tipo=<%=m.getTipo()%>">
+                                                            <i class="fa fa-angle-double-right" aria-hidden="true"></i><%=m.getNombre()%> </a></li>
+                                                            <% } %>                   
                                                 </ul>
                                             </li>
                                             <li class="dropdown-submenu">
                                                 <a href="javascript:void(0);"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Maestrías</a>
                                                 <ul class="dropdown-menu">
-
+                                                    <%
+                                                        ArrayList<ProgramaDTO> s4 = f.mostrarProgramaTipo(5);
+                                                        for (ProgramaDTO m : s4) {
+                                                    %>
+                                                    <li><a href="../FI/VerPrograma.jsp?id=<%=m.getIdPrograma()%>&tipo=<%=m.getTipo()%>">
+                                                            <i class="fa fa-angle-double-right" aria-hidden="true"></i><%=m.getNombre()%> </a></li>
+                                                            <% } %>  
                                                 </ul>
                                             </li>
                                             <li class="dropdown-submenu">
                                                 <a href="javascript:void(0);"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Doctorados</a>
                                                 <ul class="dropdown-menu">
-
+                                                    <%
+                                                        ArrayList<ProgramaDTO> s5 = f.mostrarProgramaTipo(6);
+                                                        for (ProgramaDTO m : s5) {
+                                                    %>
+                                                    <li><a href="../FI/VerPrograma.jsp?id=<%=m.getIdPrograma()%>&tipo=<%=m.getTipo()%>">
+                                                            <i class="fa fa-angle-double-right" aria-hidden="true"></i><%=m.getNombre()%> </a></li>
+                                                            <% } %>  
                                                 </ul>
                                             </li>
                                         </ul>
@@ -243,7 +289,7 @@
                                         for (TipoInvestigacionDTO i : inv) {
                                             System.out.println("..." + i.getNombre());
                                     %>
-                                    <li><a href="../FI/verInvestigacion.jsp?id=<%=i.getIdTipoInvest()%>">
+                                    <li><a href="../FI/verInvestigacion.jsp?id=<%=i.getIdTipoInvest()%>&nombre=<%=i.getNombre()%>">
                                             <i class="fa fa-angle-double-right" aria-hidden="true"></i><%=i.getNombre()%> </a></li>
                                             <% }%>  
                                 </ul>
@@ -259,49 +305,63 @@
                                         for (TipoInfraestructuraDTO i : inf) {
                                             System.out.println("..." + i.getNombre());
                                     %>
-                                    <li><a href="../FI/verInfraestructura.jsp?id=<%=i.getIdTipoInfra()%>">
+                                    <li><a href="../FI/verInfraestructura.jsp?id=<%=i.getIdTipoInfra()%>&nombre=<%=i.getNombre()%>">
                                             <i class="fa fa-angle-double-right" aria-hidden="true"></i><%=i.getNombre()%> </a></li>
                                             <% }%>  
                                 </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
-                                Extension
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="">Cursos Extension</a></li>
-                                <li><a href="">Convenios</a></li>
-                                <li><a href="">Proyectos </a></li>
-                                <li><a href="">Actividades </a></li>                             
-                            </ul>
-                        </li>
+                            </li>
+                            <li class="dropdown">
+                                <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+                                    Extension
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <%
 
-                        <li class="dropdown">
-                            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
-                                Internacionalización
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="">Convenios</a></li>
-                                <li><a href="">Guías y formatos</a></li>
-                                <li><a href="">Movilidad Estudiantíl </a></li>
-                                <li><a href="">Movilidad Docente </a></li>
-                                <li><a href="">Extranjeros</a></li>
-                                <li><a href="">Contacto</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
-                                Graduados
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="">Tramites</a></li>
-                                <li><a href="">Oferta Laboral</a></li>
-                                <li><a href="">Informacion x Empresas</a></li>
-                                <li><a href="">Becas por Graduados </a></li>
-                                <li><a href="">Encuesta</a></li>
-                                <li><a href="">Contacto</a></li>
-                            </ul>
-                        </li>
+                                        ArrayList<TipoExtensionDTO> ext = f.mostrarTipoExt();
+                                        for (TipoExtensionDTO i : ext) {
+                                            System.out.println("..." + i.getDescripcion());
+                                    %>
+                                    <li><a href="../FI/verExtension.jsp?id=<%=i.getIdtipo()%>&nombre=<%=i.getDescripcion()%>">
+                                            <i class="fa fa-angle-double-right" aria-hidden="true"></i><%=i.getDescripcion()%> </a></li>
+                                            <% }%>                             
+                                </ul>
+                            </li>
+
+                            <li class="dropdown">
+                                <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+                                    Internacionalización
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <%
+                                        ArrayList<TipoInternacionalizacionDTO> iter = f.mostrarTipoInter();
+                                        for (TipoInternacionalizacionDTO i : iter) {
+                                            System.out.println("..." + i.getDescripcion());
+                                    %>
+                                    <li><a href="../FI/verInternacionalizacion.jsp?id=<%=i.getIdTipoInternac()%>&nombre=<%=i.getDescripcion()%>">
+                                            <i class="fa fa-angle-double-right" aria-hidden="true"></i><%=i.getDescripcion()%> </a></li>
+                                            <% }%>
+                                    <li><a href="http://cinera.ufps.edu.co/interufps/index.php?option=com_contact&view=contact&id=1&Itemid=83" target="_blank">
+                                            <i class="fa fa-angle-double-right" aria-hidden="true"></i>Contacto</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+                                    Graduados
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <%
+                                        ArrayList<TipoInfoGraduadoDTO> tp = f.mostrarTipoInfoGrad();
+                                        for (TipoInfoGraduadoDTO i : tp) {
+                                    %>
+                                    <li><a href="../FI/informacionGraduados.jsp?id=<%=i.getIdtipoinfo()%>&nombre=<%=i.getDescripcion()%>">
+                                            <i class="fa fa-angle-double-right" aria-hidden="true"></i><%=i.getDescripcion()%> </a></li>
+                                            <% }%>
+                                    <li><a href="http://tutrabajo.ufps.trabajando.com.co/" target="_blank">
+                                            <i class="fa fa-angle-double-right" aria-hidden="true"></i>Portal de Empleo </a></li>
+                                    <li><a href="http://200.93.148.47/bienestar/egresados/" target="_blank">
+                                            <i class="fa fa-angle-double-right" aria-hidden="true"></i>Oficina de Egresados </a></li>       
+                                </ul>
+                            </li>
 
                         </ul>
                     </div>

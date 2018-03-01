@@ -17,6 +17,7 @@ public interface IInternacionalizacion {
     public boolean registrarInternacionalizacion(InternacionalizacionDTO dto) throws Exception;
     public ArrayList<InternacionalizacionDTO> mostrarInternacionalizacion() throws Exception;
     public ArrayList<InternacionalizacionDTO> mostrarInternacionalizacionId(int idInternac) throws Exception;
+    public ArrayList<InternacionalizacionDTO> mostrarInternacionalizacionTipo(int tipo) throws Exception;
     public boolean eliminarInternacionalizacion(InternacionalizacionDTO dto) throws Exception;
     public boolean actualizarInternacionalizacion(int idInternac, int tipointer, 
             String descripcion, String nombre, String link, String imagen) throws Exception;

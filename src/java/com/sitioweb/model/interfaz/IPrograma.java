@@ -17,6 +17,7 @@ public interface IPrograma {
     public boolean registrarPrograma(ProgramaDTO dto) throws Exception;
     public ArrayList<ProgramaDTO> mostrarPrograma() throws Exception;
     public ArrayList<ProgramaDTO> mostrarProgramaId(int idPrograma) throws Exception;
+    public ArrayList<ProgramaDTO> mostrarProgramaTipo(int tipo) throws Exception;
     public boolean eliminarPrograma(ProgramaDTO dto) throws Exception;
     public boolean actualizarPrograma(int idPrograma, String nombre, int tipo, String director, 
             String correoprograma, String ubicacion, String telefono, int codsnies, 

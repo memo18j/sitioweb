@@ -73,22 +73,26 @@ public class MySQLProgramaDAO implements IPrograma{
         ResultSet res = null;
         try {
             conn = Conexion.conectar();
-            stmt = conn.prepareStatement("SELECT * FROM programa");
+            stmt = conn.prepareStatement("SELECT p.idprograma, p.nombre, p.tipo, tp.descripcion, "
+                    + "p.director, p.correoprograma, p.ubicacion, p.telefono, p.codsnies, "
+                    + "p.modalidad, p.horarioatencion, p.imagen, p.link FROM programa p, tipoprograma tp"
+                    + " WHERE p.tipo=tp.idtipoprog");
             res = stmt.executeQuery();
             while (res.next()) {
                 usu = new ProgramaDTO();
                 usu.setIdPrograma(res.getInt(1));
-                usu.setNombre(res.getString(2));
+                usu.setNombre(res.getString(2));               
                 usu.setTipo(res.getInt(3));
-                usu.setDirector(res.getString(4));
-                usu.setCorreoprograma(res.getString(5));
-                usu.setUbicacion(res.getString(6));
-                usu.setTelefono(res.getString(7));
-                usu.setCodsnies(res.getInt(8));
-                usu.setModalidad(res.getString(9));
-                usu.setHorario(res.getString(10));
-                usu.setImagen(res.getString(11));
-                usu.setLink(res.getString(12));
+                usu.setTnombre(res.getString(4));
+                usu.setDirector(res.getString(5));
+                usu.setCorreoprograma(res.getString(6));
+                usu.setUbicacion(res.getString(7));
+                usu.setTelefono(res.getString(8));
+                usu.setCodsnies(res.getInt(9));
+                usu.setModalidad(res.getString(10));
+                usu.setHorario(res.getString(11));
+                usu.setImagen(res.getString(12));
+                usu.setLink(res.getString(13));
                 list.add(usu);
             }
             stmt.close();
@@ -112,22 +116,69 @@ public class MySQLProgramaDAO implements IPrograma{
         try {
             conn = Conexion.conectar();
             System.out.println("entro: " + idPrograma);
-            stmt = conn.prepareStatement("SELECT * FROM programa WHERE idprograma=" + idPrograma);
+            stmt = conn.prepareStatement("SELECT p.idprograma, p.nombre,p.tipo, tp.descripcion, "
+                    + "p.director, p.correoprograma, p.ubicacion, p.telefono, p.codsnies, "
+                    + "p.modalidad, p.horarioatencion, p.imagen, p.link FROM programa p, tipoprograma tp"
+                    + " WHERE p.tipo=tp.idtipoprog AND p.idprograma=" + idPrograma);
             res = stmt.executeQuery();
             while (res.next()) {
                 usu = new ProgramaDTO();
                 usu.setIdPrograma(res.getInt(1));
-                usu.setNombre(res.getString(2));
+                usu.setNombre(res.getString(2));               
                 usu.setTipo(res.getInt(3));
-                usu.setDirector(res.getString(4));
-                usu.setCorreoprograma(res.getString(5));
-                usu.setUbicacion(res.getString(6));
-                usu.setTelefono(res.getString(7));
-                usu.setCodsnies(res.getInt(8));
-                usu.setModalidad(res.getString(9));
-                usu.setHorario(res.getString(10));
-                usu.setImagen(res.getString(11));
-                usu.setLink(res.getString(12));
+                usu.setTnombre(res.getString(4));
+                usu.setDirector(res.getString(5));
+                usu.setCorreoprograma(res.getString(6));
+                usu.setUbicacion(res.getString(7));
+                usu.setTelefono(res.getString(8));
+                usu.setCodsnies(res.getInt(9));
+                usu.setModalidad(res.getString(10));
+                usu.setHorario(res.getString(11));
+                usu.setImagen(res.getString(12));
+                usu.setLink(res.getString(13));
+                list.add(usu);
+            }
+            stmt.close();
+            res.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return list;
+    }
+    
+    @Override
+    public ArrayList<ProgramaDTO> mostrarProgramaTipo(int tipo) throws Exception {
+        ArrayList<ProgramaDTO> list = new ArrayList();
+        PreparedStatement stmt = null;
+        ProgramaDTO usu = null;
+        ResultSet res = null;
+        try {
+            conn = Conexion.conectar();
+            System.out.println("entro: " + tipo);
+            stmt = conn.prepareStatement("SELECT p.idprograma, p.nombre, p.tipo, tp.descripcion, "
+                    + "p.director, p.correoprograma, p.ubicacion, p.telefono, p.codsnies, "
+                    + "p.modalidad, p.horarioatencion, p.imagen, p.link FROM programa p, tipoprograma tp"
+                    + " WHERE p.tipo=tp.idtipoprog AND p.tipo=" + tipo);
+            res = stmt.executeQuery();
+            while (res.next()) {
+                usu = new ProgramaDTO();
+                usu.setIdPrograma(res.getInt(1));
+                usu.setNombre(res.getString(2));               
+                usu.setTipo(res.getInt(3));
+                usu.setTnombre(res.getString(4));
+                usu.setDirector(res.getString(5));
+                usu.setCorreoprograma(res.getString(6));
+                usu.setUbicacion(res.getString(7));
+                usu.setTelefono(res.getString(8));
+                usu.setCodsnies(res.getInt(9));
+                usu.setModalidad(res.getString(10));
+                usu.setHorario(res.getString(11));
+                usu.setImagen(res.getString(12));
+                usu.setLink(res.getString(13));
                 list.add(usu);
             }
             stmt.close();

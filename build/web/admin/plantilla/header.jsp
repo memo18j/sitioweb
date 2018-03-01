@@ -32,20 +32,13 @@
                     <a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen,open" data-target="#nav,html">
                         <i class="fa fa-bars"></i>
                     </a>
-                    <a href="#" class="navbar-brand" data-toggle="fullscreen">
+                    <a href="../views/administrador.jsp" class="navbar-brand" data-toggle="fullscreen">
                         <img src="../plantilla/images/ufps2.png"class="m-r-sm"> S.I.F.I</a>
                     <a class="btn btn-link visible-xs" data-toggle="dropdown" data-target=".nav-user">
                         <i class="fa fa-cog"></i>
                     </a>
                 </div>
-                <ul class="nav navbar-nav hidden-xs">
-                    <li class="dropdown">
-                        <a  class="pull-right btn btn-sm  btn-icon">
-                            <i class="fa fa-angle-left text"></i>
-                            <i class="fa fa-angle-right text-active"></i>
-                        </a>
-                    </li>
-                </ul>      
+                   
                 <ul class="nav navbar-nav navbar-right m-n hidden-xs nav-user">
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -301,15 +294,15 @@
                                                 </a>
                                                 <ul class="nav lt">
                                                     <li>
-                                                        <a href="../paginas/res_list.jsp">
+                                                        <a href="../views/RegistrarInformGraduados.jsp">
                                                             <i class="fa fa-arrow-circle-o-right"></i>
-                                                            <span>Registrar Usuario</span>
+                                                            <span>Inoformacion Graduados</span>
                                                         </a>
                                                     </li>
                                                     <li>
-                                                        <a href="../paginas/res_list.jsp">
+                                                        <a href="../views/ConsultarGraduados.jsp">
                                                             <i class="fa fa-arrow-circle-o-right"></i>
-                                                            <span>Consultar usuarios</span>
+                                                            <span>Consultar Informacion</span>
                                                         </a>
                                                     </li>
                                                 </ul>

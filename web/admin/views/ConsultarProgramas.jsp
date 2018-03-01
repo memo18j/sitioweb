@@ -45,9 +45,9 @@
                                 <th data-field="Correo"><%=st.getCorreoprograma()%></th>
                                 <th data-field="Tele"><%=st.getTelefono()%></th>
                                 <th data-field="edit"><a class="btn btn-danger"style="background-color: #aa1916;"
-                                                         href="ModificarPrograma.jsp?id=<%=st.getIdPrograma()%>"><i class="fa fa-edit"></i></a></th>
+                                href="ModificarPrograma.jsp?id=<%=st.getIdPrograma()%>"><i class="fa fa-edit"></i></a></th>
                                 <th data-field="remove"><a class="btn btn-danger"style="background-color: #aa1916;" 
-                                                           href="Eliminar/EliminarPrograma.jsp?id=<%=st.getIdPrograma()%>&nombre=<%=st.getNombre()%>"<i class="fa fa-trash-o"></i></a></th>
+                                href="Eliminar/EliminarInvestigacion.jsp?id=<%=st.getIdPrograma()%>&nombre=<%=st.getNombre()%>"><i class="fa fa-trash-o"></i></a></th>
                             </tr>
                             <% }%>    
                         </tbody>
